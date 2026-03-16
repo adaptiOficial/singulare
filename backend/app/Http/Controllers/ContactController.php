@@ -19,9 +19,9 @@ class ContactController extends Controller
 
    public function index(Request $request): JsonResponse
     {
-        $contact = $this->contact->newQuery()->when($request->has('search'), function($query) use ($request){
-            $query->where('done', '=', $request->search);
-        })->orderBy('id', 'desc')->paginate(10);
+        $contact = $this->contact->newQuery()->when($request->has('done'), function($query) use ($request){
+            $query->where('done', '=', $request->done);
+        })->orderBy('created_at', 'desc')->paginate(10);
         return response()->json($contact, Response::HTTP_OK);
     }
 
