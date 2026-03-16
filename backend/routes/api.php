@@ -17,10 +17,10 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/users', UserController::class);
 
     Route::apiResource('contacts', ContactController::class)->except('index');
-    Route::get('/contacts', [ContactController::class,'index']);
+
 });
 
-
+   Route::get('/contacts', [ContactController::class,'index']);
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
