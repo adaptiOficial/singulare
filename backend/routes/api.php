@@ -15,10 +15,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/users', UserController::class);
-});
-
-Route::get('/companyinformation', [CompanyInformationController::class, 'index']);
+   
 Route::put('/companyinformation/{id}', [CompanyInformationController::class, 'update']);
+});
+ Route::get('/companyinformation', [CompanyInformationController::class, 'index']);
+
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
