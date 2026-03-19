@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LinkWppController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +14,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
+    Route::apiResource('/link-wpp', LinkWppController::class);
     Route::apiResource('/users', UserController::class);
 });
+
+Route::get('/link-wpp', [LinkWppController::class, 'index']);
+Route::get('/link-wpp/{id}', [LinkWppController::class, 'show']);
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];

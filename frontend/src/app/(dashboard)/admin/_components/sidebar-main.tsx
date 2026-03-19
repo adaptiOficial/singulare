@@ -15,6 +15,7 @@ import { LuHome, LuLogOut, LuUsers } from 'react-icons/lu'
 import { DropdownMenuItem } from '@/components/dropdown-menu'
 import { signOut, useSession } from 'next-auth/react'
 import logo from '@/assets/img/logo.jpeg'
+import { FaWhatsapp } from 'react-icons/fa'
 
 export function SidebarMain() {
   const session = useSession()
@@ -34,6 +35,10 @@ export function SidebarMain() {
         <SidebarNavLink href="/admin/usuarios">
           <LuUsers />
           <SidebarNavLinkLabel>Usuários</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/link-wpp">
+          <FaWhatsapp />
+          <SidebarNavLinkLabel>Links WhatsApp</SidebarNavLinkLabel>
         </SidebarNavLink>
       </SidebarNav>
       <SidebarFooter>
