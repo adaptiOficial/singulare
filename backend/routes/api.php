@@ -7,6 +7,7 @@ use App\Http\Controllers\LinkWppController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\MyHistoryController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use App\Models\MyHistory;
 use Illuminate\Http\Request;
@@ -23,7 +24,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/link-wpp', LinkWppController::class);
+    Route::apiResource('/services', ServiceController::class)->except('index', 'show');
     Route::apiResource('/users', UserController::class);
+
     Route::apiResource('/my-histories', MyHistoryController::class)->except('index', 'show');
     Route::apiResource('/banners', BannerController::class)->except('index', 'show');
    
@@ -63,5 +66,8 @@ Route::get('/my-histories/{id}', [MyHistoryController::class, 'show'] );
 
 Route::get('/about-us', [AboutUsController::class, 'index'] );
 Route::get('/about-us/{id}', [AboutUsController::class, 'show'] );
+Route::get('/services', [ServiceController::class, 'index'] );
+Route::get('/services/{id}', [ServiceController::class, 'show'] );
+
 
 require __DIR__.'/auth.php';
