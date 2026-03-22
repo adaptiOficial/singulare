@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,18 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
 
 Route::apiResource('/faq',FaqController::class)->except('index');
     
+
+    Route::apiResource('contacts', ContactController::class);
+   
+
 });
 
  Route::get('/feedbacks', [FeedbackController::class,'index']);
 
 Route::get('/faq', [FaqController::class, 'index']);
 
+
+  
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
