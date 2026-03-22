@@ -60,7 +60,7 @@ export default async function ListServices({
 
   return (
     <>
-      <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
+      <DashboardContainer className="flex h-min justify-end space-x-0 gap-y-2.5 max-sm:flex-col">
         
         <DialogCreateService>
           <Button size="sm">
