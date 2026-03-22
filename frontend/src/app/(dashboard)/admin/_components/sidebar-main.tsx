@@ -11,10 +11,12 @@ import {
   SidebarHeaderLogo,
   UserDropdown,
 } from '@/components/dashboard/sidebar'
-import { LuBookOpen, LuHome, LuLogOut, LuUsers } from 'react-icons/lu'
+import { LuFileImage, LuBookOpen, LuHome, LuLogOut, LuMessageCircle, LuMail, LuUsers, LuContact } from 'react-icons/lu'
+import { AiOutlineContainer } from "react-icons/ai";
 import { DropdownMenuItem } from '@/components/dropdown-menu'
 import { signOut, useSession } from 'next-auth/react'
 import logo from '@/assets/img/logo.jpeg'
+import { FaWhatsapp } from 'react-icons/fa'
 
 export function SidebarMain() {
   const session = useSession()
@@ -34,6 +36,34 @@ export function SidebarMain() {
         <SidebarNavLink href="/admin/usuarios">
           <LuUsers />
           <SidebarNavLinkLabel>Usuários</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/banners">
+          <LuFileImage />
+          <SidebarNavLinkLabel>Banner</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/contatos">
+          <LuMail />
+          <SidebarNavLinkLabel>Contatos</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/faq">
+          <LuMessageCircle />
+          <SidebarNavLinkLabel>FAQs</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/feedbacks">
+           <LuMessageCircle />
+           <SidebarNavLinkLabel>Feedbacks</SidebarNavLinkLabel>
+        </SidebarNavLink>
+         <SidebarNavLink href="/admin/informacoesdaempresa">
+          <LuContact  />
+          <SidebarNavLinkLabel>Informações da Empresa</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/link-wpp">
+          <FaWhatsapp />
+          <SidebarNavLinkLabel>Link WhatsApp</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/my-histories">
+          <AiOutlineContainer />
+          <SidebarNavLinkLabel>Minhas Histórias</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/about-us">
           <LuBookOpen />

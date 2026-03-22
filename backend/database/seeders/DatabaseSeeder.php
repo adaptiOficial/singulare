@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\LinkWpp;
+use App\Models\Banner;
+use App\Models\MyHistory;
 use App\Models\AboutUs;
 use App\Models\User;
+use App\Models\CompanyInformation;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +19,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
+        LinkWpp::factory(1)->create();
+        Banner::factory(1)->create();
+        MyHistory::factory(1)->create();
         AboutUs::factory(1)->create();
 
         $user = User::factory()->create([
@@ -22,5 +29,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
         $user->assignPermission('admin');
+
+        CompanyInformation::factory(1)->create();
     }
 }
