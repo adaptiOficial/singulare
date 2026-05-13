@@ -41,8 +41,26 @@
         --azul-neon: 228 100% 50%;
         --chumbo: 214.29 3.41% 40.2%;
         --cinza-carvao: 210 10.81% 14.51%;
+
+        --jump-animation: jump ease-in-out infinite;
+
+
+    }
+
+    @keyframes jump {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-1rem);
+        }
     }
 }
+
+
 
 @layer base {
     * {

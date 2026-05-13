@@ -19,10 +19,9 @@ export  function FAQ() {
     }
   }
 
-  useEffect(()=>{
-    getFaq()
-  })
-
+useEffect(() => {
+  getFaq();
+}, []);
 
 
   const toggle = (index: number) => {
@@ -30,9 +29,9 @@ export  function FAQ() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-cloudDancer shadow-[0_-1px_30px_hsl(var(--branco-gelo))] pb-16">
+    <div className="flex flex-col items-center bg-cloudDancer shadow-[0_-1px_20px_hsl(var(--branco-gelo))] pb-16">
       
-      <div className="flex justify-center pt-12 bg-cloudDancer w-80 relative top-[-0.75rem] px-8 py-4 rounded-t-xl ">
+      <div className="flex justify-center pt-12 bg-cloudDancer w-80 relative -top-4 px-8 py-4 rounded-t-xl ">
         <h1 className="text-xl font-semibold">Dúvidas Frequentes</h1>
       </div>
 
@@ -47,7 +46,7 @@ export  function FAQ() {
               className="w-full flex justify-between items-center py-4 text-left"
             >
               <span>{item.question}</span>
-              <Image src={'/arrowUp.svg'}  alt="arrow" width={14} height={7} className={`overflow-hidden transition-all duration-300 ${
+              <Image src={'/arrowUp.svg'}  alt="arrow" width={14} height={7} className={`overflow-hidden transition-all  duration-300 ${
                 openIndex === index ? "rotate-0" : "-rotate-180"
               }`}/>
              
