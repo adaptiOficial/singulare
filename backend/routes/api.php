@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\CompanyInformationController;
+use App\Http\Controllers\FacilitatorController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/profile', function (Request $request) {
@@ -26,49 +27,45 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/link-wpp', LinkWppController::class);
     Route::apiResource('/services', ServiceController::class)->except('index', 'show');
     Route::apiResource('/users', UserController::class);
-
-    Route::apiResource('/my-histories', MyHistoryController::class)->except('index', 'show');
     Route::apiResource('/banners', BannerController::class)->except('index', 'show');
-   
-Route::put('/companyinformation/{id}', [CompanyInformationController::class, 'update']);
+    Route::put('/companyinformation/{id}', [CompanyInformationController::class, 'update']);
     Route::apiResource('/feedbacks', FeedbackController::class)->except('index');
-
-
-Route::apiResource('/faq',FaqController::class)->except('index');
-    
-
+    Route::apiResource('/faq', FaqController::class)->except('index');
     Route::apiResource('contacts', ContactController::class);
-   
- 
+    Route::apiResource('/my-histories', MyHistoryController::class)->except('index', 'show');
+    Route::apiResource('/facilitator', FacilitatorController::class)->except('index', 'show');
 });
 
- Route::get('/feedbacks', [FeedbackController::class,'index']);
+
+
+Route::get('/', function () {
+    return ['Laravel' => app()->version()];
+});
+
+Route::get('/feedbacks', [FeedbackController::class, 'index']);
 
 Route::get('/faq', [FaqController::class, 'index']);
 Route::get('/faq-all', [FaqController::class, 'getAll']);
 
-
-  
- Route::get('/companyinformation', [CompanyInformationController::class, 'index']);
-
+Route::get('/companyinformation', [CompanyInformationController::class, 'index']);
 
 Route::get('/link-wpp', [LinkWppController::class, 'index']);
 Route::get('/link-wpp/{id}', [LinkWppController::class, 'show']);
 Route::apiResource('/about-us', AboutUsController::class)->except('index', 'show');
 
-Route::get('/', function () {
-    return ['Laravel' => app()->version()];
-});
-Route::get('/banners', [BannerController::class, 'index'] );
-Route::get('/banners/{id}', [BannerController::class, 'show'] );
+Route::get('/banners', [BannerController::class, 'index']);
+Route::get('/banners/{id}', [BannerController::class, 'show']);
 
-Route::get('/my-histories', [MyHistoryController::class, 'index'] );
-Route::get('/my-histories/{id}', [MyHistoryController::class, 'show'] );
+Route::get('/my-histories', [MyHistoryController::class, 'index']);
+Route::get('/my-histories/{id}', [MyHistoryController::class, 'show']);
 
-Route::get('/about-us', [AboutUsController::class, 'index'] );
-Route::get('/about-us/{id}', [AboutUsController::class, 'show'] );
-Route::get('/services', [ServiceController::class, 'index'] );
-Route::get('/services/{id}', [ServiceController::class, 'show'] );
+Route::get('/about-us', [AboutUsController::class, 'index']);
+Route::get('/about-us/{id}', [AboutUsController::class, 'show']);
 
+Route::get('/services', [ServiceController::class, 'index']);
+Route::get('/services/{id}', [ServiceController::class, 'show']);
 
-require __DIR__.'/auth.php';
+Route::get('/facilitator', [FacilitatorController::class, 'index']);
+Route::get('/facilitator/{id}', [FacilitatorController::class, 'show']);
+
+require __DIR__ . '/auth.php';
