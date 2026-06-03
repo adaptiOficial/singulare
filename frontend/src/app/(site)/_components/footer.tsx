@@ -1,9 +1,7 @@
 
 import { DashboardContainer } from "@/components/dashboard/dashboard-items";
 import { api } from "@/services/api";
-import { aboutUsType} from "@/types/aboutUs";
 import { companyInformationType } from "@/types/company-information";
-import { paginationResponseType } from "@/types/pagination-response";
 import Image from "next/image";
 
 export async function Footer(){
@@ -13,12 +11,7 @@ export async function Footer(){
     '/companyinformation',
   );
 
-  const { response: aboutUs } = await api<paginationResponseType<aboutUsType[]>>(
-    'GET',
-    '/about-us',
-  );
-
-  if (!companyinformation || !aboutUs) {
+  if (!companyinformation) {
     return (
       <DashboardContainer className="text-destructive">
         Não foi possível obter os dados.
@@ -31,45 +24,59 @@ export async function Footer(){
 
 
     return(
-       <div className="grid grid-cols-3 items-center bg-cinzaCarvao text-white py-8 px-16 border-[1px] border-x-0 border-cloudDancer">
-          <div className="flex justify-start">
-  <Image src='/logoAdapti.png' alt='Logo Empresa' width={150} height={150}/>
-</div>
+      <div className="lg:grid lg:grid-cols-[32%_38%_30%] flex flex-col lg:items-center items-start bg-[#4BB5B8] text-white sm:py-14 sm:px-16 max-sm:px-10 max-sm:py-8">
+        <div className="flex justify-start items-center flex-col self-center">
+          <Image
+            src="/group-34.png"
+            alt="Logo Empresa"
+            width={180}
+            height={200}
+            className="xl:w-[258px] xl:h-[204px] lg:w-[230px] lg:h-[160px]"
+          />
 
-<div className="flex flex-col items-center gap-4 text-center">
-  <h1>SOBRE A EMPRESA</h1>
-  <p>{aboutUs.data[0].text}</p>
-</div>
+          <Image
+            src="/group-21.png"
+            alt="Logo Empresa"
+            width={200}
+            height={200}
+            className="xl:w-[296px] xl:h-[122px] lg:w-[260px] lg:h-[100px]"
+          />
+        </div>
 
-<div className="flex flex-col items-end gap-2 text-right">
-  <h1>CONTATO</h1>
+        <div className="flex flex-col items-center  lg:text-center h-full justify-center lg:mx-[70px] max-lg:mt-6 self-start max-lg:mb-14 max-sm:mb-8">
+          <h1 className="xl:text-[32px] lg:text-[26px] text-lg lg:mb-12 max-lg:self-start max-sm:mb-3">SOBRE A EMPRESA</h1>
+          <p className="xl:text-[24px] lg:text-[20px] text-[16px] text-start">{companyinformation.about_us}</p>
+        </div>
 
-  <div className="flex flex-col gap-4 [&>div]:flex-row-reverse">
-    <div className="flex gap-4">
-      <Image src="/home.svg" alt="home-icon" height={24} width={24}/>
-      <span>{companyinformation.address}</span>
-    </div>
+        <div className="flex flex-col items-center gap-2 h-full justify-center self-center ">
+          <h1 className="xl:text-[32px] lg:text-[26px] lg:mb-12 mb-2">CONTATO</h1>
 
-    {companyinformation.instagram && (
-      <div className="flex gap-4">
-        <Image src="/instagram.svg" alt="instagram-icon" height={24} width={24}/>
-        <span>{companyinformation.instagram}</span>
+          <div className="items-start">
+            {companyinformation.instagram && (
+              <div className="flex gap-4 mb-4">
+                <Image src="/instagram.svg" alt="instagram-icon" height={24} width={24}/>
+                <span>@{
+                  companyinformation.instagram
+                    ?.replace(/\/$/, '')
+                    .split('/')
+                    .pop()}
+                </span>
+              </div>
+            )}
+
+            {companyinformation.email && (
+              <div className="flex gap-4 mb-4">
+                <Image src="/mail.svg" alt="mail-icon" width={24} height={24}/>
+                <span>{companyinformation.email}</span>
+              </div>
+            )}
+
+            <div className="flex gap-4">
+              <Image src="/phone.svg" alt="phone-icon" width={24} height={24}/>
+              <span>{companyinformation.phone}</span>
+            </div>
+          </div>
+        </div>
       </div>
-    )}
-
-    {companyinformation.email && (
-      <div className="flex gap-4">
-        <Image src="/mail.svg" alt="mail-icon" width={24} height={24}/>
-        <span>{companyinformation.email}</span>
-      </div>
-    )}
-
-    <div className="flex gap-4">
-      <Image src="/phone.svg" alt="phone-icon" width={24} height={24}/>
-      <span>{companyinformation.phone}</span>
-    </div>
-  </div>
-</div>
-    </div>
-    )
+  ) 
 }
