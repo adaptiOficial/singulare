@@ -32,7 +32,7 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/feedbacks', FeedbackController::class)->except('index');
     Route::apiResource('/faq', FaqController::class)->except('index');
     Route::apiResource('contacts', ContactController::class);
-    Route::apiResource('/my-histories', MyHistoryController::class)->except('index', 'show');
+    
     Route::apiResource('/facilitator', FacilitatorController::class)->except('index', 'show');
 });
 
@@ -55,9 +55,6 @@ Route::apiResource('/about-us', AboutUsController::class)->except('index', 'show
 
 Route::get('/banners', [BannerController::class, 'index']);
 Route::get('/banners/{id}', [BannerController::class, 'show']);
-
-Route::get('/my-histories', [MyHistoryController::class, 'index']);
-Route::get('/my-histories/{id}', [MyHistoryController::class, 'show']);
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/about-us/{id}', [AboutUsController::class, 'show']);
