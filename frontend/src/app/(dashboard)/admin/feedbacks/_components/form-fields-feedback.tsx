@@ -4,8 +4,6 @@ import { Button } from '@/components/button'
 import {
   FormFieldsGroup,
   FormField,
-  ImageForm,
-  handleImageChange,
 } from '@/components/dashboard/form'
 import { DialogFooter } from '@/components/dialog'
 import { Input } from '@/components/input'
@@ -13,7 +11,6 @@ import { Label } from '@/components/label'
 import { cn } from '@/lib/utils'
 import { ResponseErrorType } from '@/services/api'
 import { feedbackType } from '@/types/feedback'
-import { useState } from 'react'
 import { useFormStatus } from 'react-dom'
 
 
@@ -29,7 +26,6 @@ export default function FormFieldsFeedback({
   error,
 }: FormFieldsFeedbackProps) {
   const { pending } = useFormStatus()
-  const [updateImage, setUpdateImage] = useState<string | undefined>()
 
   return (
     <>
@@ -39,17 +35,32 @@ export default function FormFieldsFeedback({
         )}
 
         <FormField>
-          <Label htmlFor="username" required={!feedback}>
+          <Label htmlFor="name" required={!feedback}>
             Nome
           </Label>
           <Input
-            name="username"
-            id="username"
+            name="name"
+            id="name"
             placeholder="Digite o nome"
-            defaultValue={feedback?.username}
+            defaultValue={feedback?.name}
             disabled={pending}
             readOnly={readOnly}
-            error={error?.errors?.username}
+            error={error?.errors?.name}
+          />
+        </FormField>
+
+        <FormField>
+          <Label htmlFor="role" required={!feedback}>
+            Cargo
+          </Label>
+          <Input
+            name="role"
+            id="role"
+            placeholder="Digite o cargo"
+            defaultValue={feedback?.role}
+            disabled={pending}
+            readOnly={readOnly}
+            error={error?.errors?.role}
           />
         </FormField>
 
@@ -65,26 +76,6 @@ export default function FormFieldsFeedback({
             disabled={pending}
             readOnly={readOnly}
             error={error?.errors?.content}
-          />
-        </FormField>
-
-        <FormField>
-          <Label htmlFor="image" hidden={readOnly && !feedback?.image}>
-            Imagem
-          </Label>
-          <Input
-            name="image"
-            id="image"
-            type="file"
-            accept="image/*"
-            disabled={pending}
-            hidden={readOnly}
-            onChange={(e) => handleImageChange(e, setUpdateImage)}
-            error={error?.errors?.image}
-          />
-          <ImageForm
-            className="aspect-square size-40"
-            src={updateImage || feedback?.image}
           />
         </FormField>
       </FormFieldsGroup>

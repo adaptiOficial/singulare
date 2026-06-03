@@ -19,10 +19,10 @@ import {
 } from '@/components/dashboard/filter'
 
 interface FilterFeedbacksProps {
-  username?: string
+  name?: string
 }
 
-export function FilterFeedbacks({ username }: FilterFeedbacksProps) {
+export function FilterFeedbacks({ name }: FilterFeedbacksProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -31,7 +31,7 @@ export function FilterFeedbacks({ username }: FilterFeedbacksProps) {
   const [hasFilters, setHasFilters] = useState(false)
 
   useEffect(() => {
-    setHasFilters(checkFilters(['username'], searchParams))
+    setHasFilters(checkFilters(['name'], searchParams))
   }, [searchParams])
 
   return (
@@ -48,10 +48,10 @@ export function FilterFeedbacks({ username }: FilterFeedbacksProps) {
           action={() => applyFilter(formRef, searchParams, router, pathname)}
         >
           <Input
-            name="username"
+            name="name"
             placeholder="Nome do usuário"
             size="sm"
-            defaultValue={username}
+            defaultValue={name}
           />
 
           <Button size="sm" type="submit">
