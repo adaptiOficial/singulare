@@ -61,10 +61,6 @@ export function SidebarMain() {
           <FaWhatsapp />
           <SidebarNavLinkLabel>Link WhatsApp</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/my-histories">
-          <AiOutlineContainer />
-          <SidebarNavLinkLabel>Minhas Histórias</SidebarNavLinkLabel>
-        </SidebarNavLink>
         <SidebarNavLink href="/admin/about-us">
           <LuBookOpen />
           <SidebarNavLinkLabel>Sobre nós</SidebarNavLinkLabel>

@@ -4,8 +4,9 @@ import { ContactForm } from "./_components/contactForm"
 import { FAQ } from "./_components/faq"
 import { AboutUs } from "./_components/aboutUs"
 import { WaterMark } from "./_components/waterMark"
-import { History } from "./_components/history"
+
 import { Banner } from "./_components/banner"
+import WppButton from "@/components/whatsapp-button"
 import { FeedbacksSection } from "./_components/feedbacks"
 
 export default async function Home() {
@@ -14,12 +15,14 @@ export default async function Home() {
     <Navbar/>
     <Banner/>
     <AboutUs />
-    <History />
+
     <FeedbacksSection />
     <FAQ/>
+    
     <ContactForm />
     <Footer/>
     <WaterMark/>
+    {/* <WppButton cellphone="27999999999" color="#4DADB0" /> */}
   </div>
   )
   

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         LinkWpp::factory(1)->create();
         Banner::factory(1)->create();
-        MyHistory::factory(1)->create();
+        
         AboutUs::factory(1)->create();
         Service::factory(3)->create();
 
