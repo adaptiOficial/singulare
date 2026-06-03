@@ -21,7 +21,7 @@ class CompanyInformationController extends Controller
      */
     public function index()
     {
-        $companyInformation = $this->companyInformation->all(['id','address', 'instagram', 'email', 'phone']);
+        $companyInformation = $this->companyInformation->all(['id','address', 'instagram', 'email', 'phone', 'about_us']);
 
         return response()->json($companyInformation[0],Response::HTTP_OK);
     }

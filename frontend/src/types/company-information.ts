@@ -3,5 +3,6 @@ export type companyInformationType = {
     address: string,
     phone: string,
     instagram?: string,
-    email?: string
+    email?: string,
+    about_us: string
 }

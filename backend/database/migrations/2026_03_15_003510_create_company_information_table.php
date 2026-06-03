@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('instagram')->nullable();
             $table->string('email')->nullable();
             $table->string('phone');
+            $table->string('about_us');
             $table->timestamps();
         });
     }

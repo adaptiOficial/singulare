@@ -98,6 +98,21 @@ export default function FormFieldsCompanyInformation({
             error={error?.errors?.phone}
           />
         </FormField>
+
+        <FormField>
+          <Label htmlFor="about_us" required={!companyInformation}>
+            Sobre a Empresa
+          </Label>
+          <Input
+            name="about_us"
+            id="about_us"
+            placeholder="Conte-nos sobre a empresa"
+            defaultValue={companyInformation?.about_us}
+            disabled={pending}
+            readOnly={readOnly}
+            error={error?.errors?.about_us}
+          />
+        </FormField>
       </FormFieldsGroup>
 
       <DialogFooter className={cn({ hidden: readOnly })}>

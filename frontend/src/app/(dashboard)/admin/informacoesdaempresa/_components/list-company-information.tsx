@@ -47,6 +47,7 @@ export default async function ListCompanyInformation() {
               <TableHead>Instagram</TableHead>
               <TableHead>E-mail</TableHead>
               <TableHead>Telefone</TableHead>
+              <TableHead>Sobre Nós</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
@@ -59,6 +60,7 @@ export default async function ListCompanyInformation() {
                 <TableCell>{companyinformation.instagram ? companyinformation.instagram : 'Não cadastrado'}</TableCell>
                 <TableCell>{companyinformation.email ? companyinformation.email : 'Não cadastrado'}</TableCell>
                 <TableCell>{companyinformation.phone}</TableCell>
+                <TableCell>{companyinformation.about_us}</TableCell>
                 <TableCell className="flex justify-end gap-2">
                   <DialogInformationCompanyInformation  id={companyinformation.id}>
                     <Button variant="default-inverse" size="icon">

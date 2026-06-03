@@ -22,6 +22,7 @@ class CompanyInformationFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'instagram' => $this->faker->url(),
             'phone' => fake()->phoneNumber(),
+            'about_us' => fake()->paragraph(),
             
         ];
     }

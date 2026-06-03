@@ -15,6 +15,7 @@ class CompanyInformation extends Model
         'address',
         'instagram',
         'email',
-        'phone'
+        'phone',
+        'about_us',
     ];
 }

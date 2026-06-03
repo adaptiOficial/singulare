@@ -18,6 +18,7 @@ class UpdateCompanyInformationRequest extends FormRequest
             'instagram' => ['sometimes', 'nullable', 'url'],
             'email' => ['sometimes', 'nullable', 'email'],
             'phone' => ['sometimes', 'string', 'min:8', 'max:25'],
+            'about_us' => ['sometimes', 'string', 'min:5', 'max:255'],
         ];
     }
 
@@ -33,6 +34,10 @@ class UpdateCompanyInformationRequest extends FormRequest
 
             'phone.min' => 'O campo TELEFONE deve conter no mínimo 8 caracteres.',
             'phone.max' => 'O campo TELEFONE deve conter no máximo 20 caracteres.',
+            
+            'about_us.min' => 'O campo SOBRE A EMPRESA deve conter no mínimo 5 caracteres.',
+            'about_us.max' => 'O campo SOBRE A EMPRESA deve conter no máximo 255 caracteres.',
+
         ];
     }
 }
