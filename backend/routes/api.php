@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LinkWppController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\MyHistoryController;
@@ -16,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\FacilitatorController;
+use App\Http\Controllers\InscriptionsController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/profile', function (Request $request) {
@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::put('/companyinformation/{id}', [CompanyInformationController::class, 'update']);
     Route::apiResource('/feedbacks', FeedbackController::class)->except('index');
     Route::apiResource('/faq', FaqController::class)->except('index');
-    Route::apiResource('contacts', ContactController::class);
+    Route::apiResource('/inscriptions', InscriptionsController::class);
     
     Route::apiResource('/facilitator', FacilitatorController::class)->except('index', 'show');
 });

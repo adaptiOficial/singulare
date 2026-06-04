@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Inscription extends Model
 {
     use HasFactory, HasUuids;
 
     protected $fillable = [
-        'username',
+        'nome',
         'email',
-        'phone',
-        'message',
-        'done'
+        'telefone',
+        'cpf_cnpj',
+        'quantidade_inscricoes',
+        'ramo_atividade'
     ];
 }
