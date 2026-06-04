@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::put('/companyinformation/{id}', [CompanyInformationController::class, 'update']);
     Route::apiResource('/feedbacks', FeedbackController::class)->except('index');
     Route::apiResource('/faq', FaqController::class)->except('index');
-    Route::apiResource('inscriptions', InscriptionsController::class);
+    Route::apiResource('/inscriptions', InscriptionsController::class);
     
     Route::apiResource('/facilitator', FacilitatorController::class)->except('index', 'show');
 });
