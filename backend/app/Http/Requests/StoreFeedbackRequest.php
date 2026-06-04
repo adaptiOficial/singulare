@@ -15,7 +15,7 @@ class StoreFeedbackRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'content' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:1000'],
             'role' => ['required', 'string', 'max:255'],
         ];
     }
@@ -27,7 +27,7 @@ class StoreFeedbackRequest extends FormRequest
             'name.max' => 'O nome deve ter no máximo 255 caracteres.',
 
             'content.required' => 'O feedback é obrigatório.',
-            'content.max' => 'O feedback deve ter no máximo 255 caracteres.',
+            'content.max' => 'O feedback deve ter no máximo 1000 caracteres.',
 
             'role.required' => 'O cargo é obrigatório.',
             'role.max' => 'O cargo deve ter no máximo 255 caracteres.',

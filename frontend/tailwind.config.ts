@@ -75,9 +75,6 @@ const config: Config = {
         cinzaCarvao: {
           DEFAULT: 'hsl(var(--cinza-carvao))'
         },
-        verdeAgua:{
-          DEFAULT: 'hsl(var(--verde-agua))'
-        }
       },
       borderRadius: {
         sm: 'calc(var(--radius) - 2px)',

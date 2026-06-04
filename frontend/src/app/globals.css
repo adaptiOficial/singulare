@@ -42,10 +42,7 @@
         --chumbo: 214.29 3.41% 40.2%;
         --cinza-carvao: 210 10.81% 14.51%;
 
-        --verde-agua: 182 45% 49%;
-
         --jump-animation: jump ease-in-out infinite;
-
 
     }
 
@@ -64,6 +61,42 @@
     .swiper-container .swiper-wrapper{
         transition-timing-function: linear !important;
     }
+
+    .swiper-wrapper{
+        align-items: stretch !important;
+    }
+
+    .swiper-slide{
+        height: auto !important;
+    }
+
+    .card-scroll::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .card-scroll::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        margin-block: 4px;
+    }
+
+    .card-scroll::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+            to bottom,
+             rgba(255, 255, 255, 0.7),
+             rgba(255, 255, 255, 0.2)
+        );
+        border-radius: 999px;
+    }
+
+    .card-scroll::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.5)
+        );
+    }
+
 }
 
 

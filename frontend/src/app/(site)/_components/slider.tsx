@@ -147,7 +147,8 @@ export default function Slider({
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'stretch',
+                height: 'auto',
               }}
             >
               {item}
