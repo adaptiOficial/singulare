@@ -1,7 +1,6 @@
 import { DashboardContainer } from '@/components/dashboard/dashboard-items'
 import { Pagination } from '@/components/dashboard/pagination'
 import {
-  TabbleCellImage,
   Table,
   TableBody,
   TableCaption,
@@ -25,13 +24,13 @@ import { FilterFeedbacks } from './filter-feedbacks'
 interface ListFeedbacksProps {
   page?: number
   perPage?: number
-  username?: string
+  name?: string
 }
 
 export default async function ListFeedbacks({
   page,
   perPage,
-  username,
+  name,
 }: ListFeedbacksProps) {
   const { response } = await api<paginationResponseType<feedbackType[]>>(
     'GET',
@@ -40,7 +39,7 @@ export default async function ListFeedbacks({
       params: {
         page,
         per_page: perPage,
-        username,
+        name,
       },
     },
   )
@@ -58,7 +57,7 @@ export default async function ListFeedbacks({
   return (
     <>
       <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
-        <FilterFeedbacks username={username} />
+        <FilterFeedbacks name={name} />
 
         <DialogCreateFeedback>
           <Button size="sm">
@@ -72,8 +71,8 @@ export default async function ListFeedbacks({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Imagem</TableHead>
               <TableHead>Nome</TableHead>
+              <TableHead>Cargo</TableHead>
               <TableHead>Feedback</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
@@ -82,11 +81,10 @@ export default async function ListFeedbacks({
           <TableBody>
             {feedbacks?.map((feedback: feedbackType) => (
               <TableRow key={feedback.id}>
-                <TableCell>
-                  <TabbleCellImage src={feedback.image} />
-                </TableCell>
 
-                <TableCell>{feedback.username}</TableCell>
+                <TableCell>{feedback.name}</TableCell>
+
+                <TableCell>{feedback.role}</TableCell>
 
                 <TableCell className="max-w-[400px] truncate">
                   {feedback.content}

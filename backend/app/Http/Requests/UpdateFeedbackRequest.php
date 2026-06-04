@@ -15,7 +15,7 @@ class UpdateFeedbackRequest extends FormRequest
     {
         return [
             'name' => ['sometimes', 'string', 'max:255'],
-            'content' => ['sometimes', 'string', 'max:255'],
+            'content' => ['sometimes', 'string', 'max:1000'],
             'role' => ['sometimes', 'string', 'max:255'],
         ];
     }
@@ -27,7 +27,7 @@ class UpdateFeedbackRequest extends FormRequest
             'name.max' => 'O nome deve ter no máximo 255 caracteres.',
 
             'content.string' => 'O feedback deve ser um texto.',
-            'content.max' => 'O feedback deve ter no máximo 255 caracteres.',
+            'content.max' => 'O feedback deve ter no máximo 1000 caracteres.',
 
             'role.string' => 'O cargo deve ser um texto.',
             'role.max' => 'O cargo deve ter no máximo 255 caracteres.',

@@ -44,7 +44,6 @@
 
         --jump-animation: jump ease-in-out infinite;
 
-
     }
 
     @keyframes jump {
@@ -58,6 +57,46 @@
             transform: translateY(-1rem);
         }
     }
+
+    .swiper-container .swiper-wrapper{
+        transition-timing-function: linear !important;
+    }
+
+    .swiper-wrapper{
+        align-items: stretch !important;
+    }
+
+    .swiper-slide{
+        height: auto !important;
+    }
+
+    .card-scroll::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .card-scroll::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        margin-block: 4px;
+    }
+
+    .card-scroll::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+            to bottom,
+             rgba(255, 255, 255, 0.7),
+             rgba(255, 255, 255, 0.2)
+        );
+        border-radius: 999px;
+    }
+
+    .card-scroll::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.95),
+            rgba(255, 255, 255, 0.5)
+        );
+    }
+
 }
 
 

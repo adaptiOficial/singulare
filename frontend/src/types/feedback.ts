@@ -1,6 +1,6 @@
 export type feedbackType = {
     id?: string
-    username?: string
-    image?: string
+    name?: string
     content?: string
+    role?: string
 }

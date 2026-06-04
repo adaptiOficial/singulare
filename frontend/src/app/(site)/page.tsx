@@ -7,6 +7,8 @@ import { WaterMark } from "./_components/waterMark"
 
 import { Banner } from "./_components/banner"
 import WppButton from "@/components/whatsapp-button"
+import { FeedbacksSection } from "./_components/feedbacks"
+
 import Investimento from "./_components/investimento"
 import { linkWppType } from '@/types/linkWpp';
 import { useEffect, useState } from "react"
@@ -29,6 +31,7 @@ export default async function Home() {
     <Banner/>
     <AboutUs /> 
 
+    <FeedbacksSection />
     <FAQ/>
     
     <ContactForm />  

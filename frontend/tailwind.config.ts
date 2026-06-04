@@ -74,7 +74,7 @@ const config: Config = {
         },
         cinzaCarvao: {
           DEFAULT: 'hsl(var(--cinza-carvao))'
-        }
+        },
       },
       borderRadius: {
         sm: 'calc(var(--radius) - 2px)',
