@@ -45,7 +45,7 @@ useEffect(() => {
               onClick={() => toggle(index)}
               className="w-full flex justify-between items-center rounded-[20px] lg:py-8 py-3 lg:px-[66px] md:px-10 px-3 text-left bg-[#4DADB0]"
             >
-              <span className="lg:text-[32px] md:text-[24px] text-[18px]">{item.question}</span>
+              <span className="lg:text-[32px] md:text-[24px] sm:text-[18px] text-[13px]">{item.question}</span>
               <Image src={'/arrowUpBoldBlack.png'}  alt="arrow" width={16} height={9} className={`overflow-hidden transition-all  duration-300 ${
                 openIndex === index ? "rotate-0" : "-rotate-180"
               }`}/>
@@ -59,7 +59,7 @@ useEffect(() => {
               }`}
             >
               <div className="bg-[#ABE3E5B2] rounded-[20px] lg:py-[72px] md:py-10 lg:px-[66px] md:px-10 px-3 py-8 mt-[10px]">
-                <p className="lg:text-[32px] md:text-[24px] text-[16px] text-white">
+                <p className="lg:text-[32px] md:text-[24px] sm:text-[16px] text-[11px] text-white">
                   {item.answer}
                 </p>
               </div>

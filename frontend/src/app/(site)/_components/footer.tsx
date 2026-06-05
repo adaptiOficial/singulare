@@ -43,13 +43,13 @@ export async function Footer(){
           />
         </div>
 
-        <div className="flex flex-col items-center  lg:text-center h-full justify-center lg:mx-[70px] max-lg:mt-6 self-start max-lg:mb-14 max-sm:mb-8">
+        <div className="flex flex-col items-center  lg:text-center h-full justify-center lg:mx-[70px] max-lg:mt-6 self-start max-lg:mb-8 max-sm:mb-8">
           <h1 className="xl:text-[32px] lg:text-[26px] text-lg lg:mb-12 max-lg:self-start max-sm:mb-3">SOBRE A EMPRESA</h1>
           <p className="xl:text-[24px] lg:text-[20px] text-[16px] text-start">{companyinformation.about_us}</p>
         </div>
 
-        <div className="flex flex-col items-center gap-2 h-full justify-center self-center ">
-          <h1 className="xl:text-[32px] lg:text-[26px] lg:mb-12 mb-2">CONTATO</h1>
+        <div className="flex flex-col items-center gap-2 h-full justify-center lg:self-center ">
+          <h1 className="xl:text-[32px] lg:text-[26px] lg:mb-12 mb-2 max-lg:self-start">CONTATO</h1>
 
           <div className="items-start">
             {companyinformation.instagram && (
