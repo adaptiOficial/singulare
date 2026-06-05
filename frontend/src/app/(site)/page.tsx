@@ -7,6 +7,7 @@ import { WaterMark } from "./_components/waterMark"
 
 import { Banner } from "./_components/banner"
 import WppButton from "@/components/whatsapp-button"
+import { Facilitators } from "./_components/facilitator"
 export default async function Home() {
   return (
   <div className="min-h-screen w-full flex flex-col bg-cloudDancer">
@@ -14,13 +15,14 @@ export default async function Home() {
     <Banner/>
     <AboutUs />
 
+    <Facilitators />
+
     <FAQ/>
-    
     <ContactForm />
     <Footer/>
     <WaterMark/>
     {/* <WppButton cellphone="27999999999" color="#4DADB0" /> */}
   </div>
   )
-  
+
 }
