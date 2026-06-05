@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class ContentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,23 +25,20 @@ class ServiceRequest extends FormRequest
         $putRules = [];
 
         $rules = [
-            'image' => ['image'],
-            'title' => ['string', 'min:3', 'max:80'],
-            'content' => ['string', 'min:3', 'max:500'],
+            'image' => ['file', 'image'],
+            'text' => ['string', 'min:3', 'max:500'],
         ];
 
         if ($this->isMethod('post')) {
             $postRules = [
                 'image' => ['required'],
-                'title' => ['required'],
-                'content' => ['required'],
+                'text' => ['required'],
             ];
         }
         if ($this->isMethod('put')) {
             $putRules = [
                 'image' => ['sometimes'],
-                'title' => ['sometimes'],
-                'content' => ['sometimes'],
+                'text' => ['sometimes'],
             ];
         }
 
@@ -51,16 +48,14 @@ class ServiceRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'O campo TÍTULO é obrigatório.',
-            'title.min' => 'O campo TÍTULO deve conter no mínimo 3 caracteres.',
-            'title.max' => 'O campo TÍTULO no máximo 80 caracteres.',
 
             'image.required' => 'O campo IMAGEM é obrigatório.',
+            'image.file' => 'O campo IMAGEM deve ser um arquivo.',
             'image.image' => 'O campo IMAGEM deve conter apenas imagens.',
 
-            'content.required' => 'O campo CONTEÚDO é obrigatório.',
-            'content.min' => 'O campo CONTEÚDO deve conter no mínimo 3 caracteres.',
-            'content.max' => 'O campo CONTEÚDO no máximo 500 caracteres.',
+            'text.required' => 'O campo TEXTO é obrigatório.',
+            'text.min' => 'O campo TEXTO deve conter no mínimo 3 caracteres.',
+            'text.max' => 'O campo TEXTO no máximo 500 caracteres.',
         ];
     }
 }

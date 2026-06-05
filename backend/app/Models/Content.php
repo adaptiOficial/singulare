@@ -8,21 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Throwable;
 
-class Service extends Model
+class Content extends Model
 {
-    /** @use HasFactory<\Database\Factories\AddressFactory> */
+    /** @use HasFactory<\Database\Factories\ContentFactory> */
     use HasFactory, HasUuids;
+
+    protected $table = 'content';
+
     protected $fillable = [
-        'title',
-        'content',
+        'text',
         'image',
     ];
 
     protected static function booted(){
-        self::deleted(function (Service $service) {
+        self::deleted(function (Content $content) {
             try{
-                $image_name = explode('service/', $service['image']);
-                Storage::disk('public')->delete('service/'.$image_name[1]);
+                $image_name = explode('content/', $content['image']);
+                Storage::disk('public')->delete('content/'.$image_name[1]);
             }catch(Throwable){}
         });
     }

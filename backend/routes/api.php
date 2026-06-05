@@ -4,11 +4,9 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LinkWppController;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\MyHistoryController;
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\UserController;
-use App\Models\MyHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +24,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/link-wpp', LinkWppController::class);
-    Route::apiResource('/services', ServiceController::class)->except('index', 'show');
+    Route::apiResource('/contents', ContentController::class)->except('index', 'show');
     Route::apiResource('/users', UserController::class);
     Route::apiResource('/banners', BannerController::class)->except('index', 'show');
     Route::put('/companyinformation/{id}', [CompanyInformationController::class, 'update']);
@@ -63,8 +61,8 @@ Route::get('/banners/{id}', [BannerController::class, 'show']);
 Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/about-us/{id}', [AboutUsController::class, 'show']);
 
-Route::get('/services', [ServiceController::class, 'index']);
-Route::get('/services/{id}', [ServiceController::class, 'show']);
+Route::get('/contents', [ContentController::class, 'index']);
+Route::get('/contents/{id}', [ContentController::class, 'show']);
 
 Route::get('/facilitator', [FacilitatorController::class, 'index']);
 Route::get('/facilitator/{id}', [FacilitatorController::class, 'show']);

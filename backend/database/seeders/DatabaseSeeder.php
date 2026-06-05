@@ -6,7 +6,7 @@ use App\Models\LinkWpp;
 use App\Models\Banner;
 use App\Models\MyHistory;
 use App\Models\AboutUs;
-use App\Models\Service;
+use App\Models\Content;
 use App\Models\User;
 use App\Models\CompanyInformation;
 use App\Models\MoreInformation;
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         Banner::factory(1)->create();
         
         AboutUs::factory(1)->create();
-        Service::factory(3)->create();
+        Content::factory(3)->create();
 
         $user = User::factory()->create([
             'name' => 'Test User',
