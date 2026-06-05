@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FacilitatorRequest extends FormRequest
+class StoreFacilitatorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,32 +21,11 @@ class FacilitatorRequest extends FormRequest
      */
     public function rules(): array
     {
-        $postRules = [];
-        $putRules = [];
-
-        $rules = [
-            'name' => ['string', 'min:3', 'max: 200'],
-            'description' => ['string', 'min:3', 'max:500'],
-            'image' => ['image'],
+        return [
+            'name' => ['required', 'string', 'min:3', 'max: 200'],
+            'description' => ['required', 'string', 'min:3', 'max:1500'],
+            'image' => ['required', 'image'],
         ];
-
-        if ($this->isMethod('post')) {
-            $postRules = [
-                'name' => ['required'],
-                'description' => ['required'],
-                'image' => ['required'],
-            ];
-        }
-
-        if ($this->isMethod('put')) {
-            $putRules = [
-                'name' => ['sometimes'],
-                'description' => ['sometimes'],
-                'image' => ['sometimes'],
-            ];
-        }
-
-        return array_merge_recursive($rules, $postRules, $putRules);
     }
 
         public function messages()
@@ -58,7 +37,7 @@ class FacilitatorRequest extends FormRequest
 
             'description.required' => 'O campo DESCRIÇÃO é obigatório.',
             'description.min' => 'O campo DESCRIÇÃO deve conter no mínimo 3 caracteres.',
-            'description.max' => 'O campo DESCRIÇÃO no máximo 500 caracteres.',
+            'description.max' => 'O campo DESCRIÇÃO no máximo 1500 caracteres.',
 
             'image.required' => 'O campo IMAGEM é obrigatório.',
             'image.image' => 'O campo IMAGEM deve conter apenas imagens.',
