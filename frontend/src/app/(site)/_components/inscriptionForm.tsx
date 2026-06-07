@@ -63,7 +63,7 @@ export function InscriptionForm() {
     </div>
     <div className="flex flex-col items-center bg-[#4DADB0] py-16 px-[10%]">
       <div className="w-full max-w-6xl"> 
-        <h1 className="max-md:text-6xl max-md:text-center text-4xl font-bold text-white mb-10 ml-10 text-left">
+        <h1 className="lg:text-6xl md:text-4xl max-md:text-center text-4xl font-bold text-white mb-10 ml-10 text-left">
           Faça sua inscrição
         </h1>
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-32 gap-y-6">
