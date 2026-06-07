@@ -4,7 +4,7 @@ import {
   DashboardHeaderTitle,
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
-import { LuImage } from 'react-icons/lu'
+import { LuDollarSign } from 'react-icons/lu'
 import ListPrices from './_components/list-price'
 import { Suspense } from 'react'
 import { SkeletonPrice } from './_components/skeleton-price'
@@ -20,7 +20,7 @@ export default async function Page({
     <>
       <DashboardHeader>
         <DashboardHeaderTitle>
-          <LuImage />
+          <LuDollarSign />
           Tabela de Preços
         </DashboardHeaderTitle>
 

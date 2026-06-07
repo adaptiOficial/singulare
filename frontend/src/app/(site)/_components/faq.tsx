@@ -29,10 +29,10 @@ useEffect(() => {
   };
 
   return (
-    <div className="flex flex-col items-center lg:mx-[80px] lg:my-20 sm:mx-[100px] my-8 mx-8">
+    <div className="flex flex-col items-center mx-[10%] lg:my-20 my-8 ">
     
-      <div className="flex justify-start w-full lg:mb-20 sm:mb-8 mb-4">
-        <h1 className="lg:text-[48px] md:text-[36px] max-md:text-[22px] font-semibold">Perguntas Frequentes</h1>
+      <div className="flex md:justify-start justify-center w-full lg:mb-20 sm:mb-8 mb-4">
+        <h1 className="lg:text-[48px] md:text-[36px] max-md:text-[22px] font-semibold">Dúvidas Frequentes</h1>
       </div>
 
       <div className=" text-white w-full rounded-xl  flex flex-col ">
