@@ -25,20 +25,23 @@ class BannerRequest extends FormRequest
         $putRules = [];
 
         $rules = [
+            'title' => ['string', 'min:3', 'max:200'],
+            'subtitle' => ['nullable', 'string', 'max:255'],
+            'button_text' => ['nullable', 'string', 'max:50'],
+            'button_link' => ['nullable', 'max:255'],
             'image' => ['image'],
-            'text' => ['string', 'min:3', 'max:200'],
         ];
 
         if ($this->isMethod('post')) {
             $postRules = [
+                'title' => ['required'],
                 'image' => ['required'],
-                'text' => ['required'],
             ];
         }
         if ($this->isMethod('put')) {
             $putRules = [
+                'title' => ['sometimes'],
                 'image' => ['sometimes'],
-                'text' => ['sometimes'],
             ];
         }
 
@@ -48,9 +51,11 @@ class BannerRequest extends FormRequest
     public function messages()
     {
         return [
-            'text.required' => 'O campo TEXTO é obigatório.',
-            'text.min' => 'O campo TEXTO deve conter no mínimo 3 caracteres.',
-            'text.max' => 'O campo TEXTO no máximo 200 caracteres.',
+            'title.required' => 'O campo TÍTULO é obrigatório.',
+            'title.min' => 'O campo TÍTULO deve conter no mínimo 3 caracteres.',
+            'title.max' => 'O campo TÍTULO deve conter no máximo 200 caracteres.',
+
+            'button_link.url' => 'O LINK DO BOTÃO deve ser uma URL válida.',
 
             'image.required' => 'O campo IMAGEM é obrigatório.',
             'image.image' => 'O campo IMAGEM deve conter apenas imagens.',

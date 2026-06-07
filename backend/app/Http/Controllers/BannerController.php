@@ -23,7 +23,7 @@ class BannerController extends Controller
     public function index(Request $request): JsonResponse
     {
         $banner = $this->banner->newQuery()->when($request->has('search'), function($query) use ($request){
-            $query->where('text', 'like', '%'.$request->search.'%');
+            $query->where('title', 'like', '%'.$request->search.'%');
         })->orderBy('id', 'desc')->paginate(10);
         return response()->json($banner, Response::HTTP_OK);
     }

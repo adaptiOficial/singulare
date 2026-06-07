@@ -13,7 +13,10 @@ class Banner extends Model
     /** @use HasFactory<\Database\Factories\AddressFactory> */
     use HasFactory, HasUuids;
     protected $fillable = [
-        'text',
+        'title',
+        'subtitle',
+        'button_text',
+        'button_link',
         'image',
     ];
 

@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('title');
+            $table->string('subtitle');
+            $table->string('button_text');
+            $table->string('button_link');
             $table->string('image');
-            $table->text('text');
             $table->timestamps();
         });
     }
