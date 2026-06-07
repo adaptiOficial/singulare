@@ -31,7 +31,7 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::put('/moreinformation/{id}', [MoreInformationController::class, 'update']);
     Route::apiResource('/feedbacks', FeedbackController::class)->except('index');
     Route::apiResource('/faq', FaqController::class)->except('index');
-    Route::apiResource('/inscriptions', InscriptionsController::class);
+    Route::apiResource('/inscriptions', InscriptionsController::class)->except('store');
     
     Route::apiResource('/facilitator', FacilitatorController::class)->except('index', 'show');
 });
@@ -43,6 +43,8 @@ Route::get('/', function () {
 });
 
 Route::get('/feedbacks', [FeedbackController::class, 'index']);
+
+Route::post('/inscriptions', [InscriptionsController::class, 'store']);
 
 Route::get('/faq', [FaqController::class, 'index']);
 Route::get('/faq-all', [FaqController::class, 'getAll']);
