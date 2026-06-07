@@ -31,13 +31,17 @@ export default async function Home() {
     <Navbar/>
     <Banner/>
     <AboutUs /> 
-
-    <ContentsSection />
+    <section id="conteudo">
+      <ContentsSection />
+    </section>
     <FeedbacksSection />
-    <FAQ/>
-    
+    <section id="faq"> 
+      <FAQ/>
+    </section>
     <Preco />
-    <InscriptionForm />  
+    <section id="inscricao">
+      <InscriptionForm />  
+    </section>
     <Footer/>
     <WaterMark/>
     <WppButton cellphone={linkWpp} size="sm" color="#25d366" className="bg-black rounded-full sm:p-4 p-3" /> 
