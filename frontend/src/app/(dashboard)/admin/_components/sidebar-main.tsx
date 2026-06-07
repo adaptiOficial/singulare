@@ -72,9 +72,9 @@ export function SidebarMain() {
           <LuBookOpen />
           <SidebarNavLinkLabel>Sobre nós</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/services">
+        <SidebarNavLink href="/admin/content">
           <LuLayers />
-          <SidebarNavLinkLabel>Serviços</SidebarNavLinkLabel>
+          <SidebarNavLinkLabel>Conteúdo</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/maisinformacoes">
           <LuInfo />

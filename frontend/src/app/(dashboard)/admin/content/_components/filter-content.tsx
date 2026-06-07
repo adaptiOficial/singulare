@@ -18,11 +18,11 @@ import {
   ButtonFilter,
 } from '@/components/dashboard/filter'
 
-interface FilterServicesProps {
+interface FilterContentProps {
   title?: string
 }
 
-export function FilterServices({ title }: FilterServicesProps) {
+export function FilterContent({ title }: FilterContentProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -48,7 +48,7 @@ export function FilterServices({ title }: FilterServicesProps) {
         >
           <Input
             name="title"
-            placeholder="Título do serviço"
+            placeholder="Título do conteúdo"
             size="sm"
             defaultValue={title}
           />

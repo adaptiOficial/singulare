@@ -8,36 +8,36 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsService from './form-fields-service'
-import { serviceType } from '@/types/service'
+import FormFieldsContent from './form-fields-content'
+import { contentType } from '@/types/content'
 import { api } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 
-interface DialogInformationServiceProps {
+interface DialogInformationContentProps {
   id: string
   children: React.ReactNode
   isInformation?: boolean
 }
 
-export function DialogInformationService({
+export function DialogInformationContent({
   id,
   children,
-}: DialogInformationServiceProps) {
-  const [service, setService] = useState<serviceType | null>(null)
+}: DialogInformationContentProps) {
+  const [content, setContent] = useState<contentType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
   useEffect(() => {
     const requestData = async () => {
-      const { response } = await api<serviceType>('GET', `/services/${id}`)
+      const { response } = await api<contentType>('GET', `/contents/${id}`)
 
       if (response) {
-        setService(response)
+        setContent(response)
       } else {
-        setService(null)
+        setContent(null)
         toast({
-          title: 'Serviço não encontrado!',
+          title: 'Conteúdo não encontrado!',
         })
         setOpen(false)
       }
@@ -52,15 +52,15 @@ export function DialogInformationService({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Informações do serviço</DialogTitle>
+          <DialogTitle>Informações do conteúdo</DialogTitle>
           <DialogDescription>
-            Visualize as informações detalhadas do serviço abaixo.
+            Visualize as informações detalhadas do conteúdo abaixo.
           </DialogDescription>
         </DialogHeader>
-        {service ? (
-          <FormFieldsService service={service} readOnly />
+        {content ? (
+          <FormFieldsContent content={content} readOnly />
         ) : (
-          <FormFieldsService readOnly />
+          <FormFieldsContent readOnly />
         )}
       </DialogContent>
     </Dialog>

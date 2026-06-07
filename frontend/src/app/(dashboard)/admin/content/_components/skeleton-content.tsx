@@ -13,7 +13,7 @@ import { DialogFooter } from '@/components/dialog'
 import { Skeleton } from '@/components/skeleton'
 import { cn } from '@/lib/utils'
 
-export function SkeletonServices() {
+export function SkeletonContent() {
   return (
     <>
       <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
@@ -74,13 +74,13 @@ export function SkeletonServices() {
   )
 }
 
-interface SkeletonFormFieldsServiceProps {
+interface SkeletonFormFieldsContentProps {
   readOnly?: boolean
 }
 
-export default function SkeletonFormFieldsService({
+export default function SkeletonFormFieldsContent({
   readOnly,
-}: SkeletonFormFieldsServiceProps) {
+}: SkeletonFormFieldsContentProps) {
   return (
     <>
       <FormFieldsGroup>

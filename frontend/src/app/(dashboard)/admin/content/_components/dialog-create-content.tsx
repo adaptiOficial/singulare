@@ -8,18 +8,18 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsService from './form-fields-service'
-import { createService } from '@/actions/services'
+import FormFieldsContent from './form-fields-content'
+import { createContent } from '@/actions/content'
 import { filterFormData } from '@/services/filter-form-data'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 import { ResponseErrorType } from '@/services/api'
 
-interface DialogCreateServiceProps {
+interface DialogCreateContentProps {
   children: React.ReactNode
 }
 
-export function DialogCreateService({ children }: DialogCreateServiceProps) {
+export function DialogCreateContent({ children }: DialogCreateContentProps) {
   const [open, setOpen] = useState<boolean>()
   const [error, setError] = useState<ResponseErrorType | null>(null)
   const { toast } = useToast()
@@ -34,16 +34,16 @@ export function DialogCreateService({ children }: DialogCreateServiceProps) {
     setError(null)
     const newForm = await filterFormData(form)
 
-    const erro = await createService(newForm)
+    const erro = await createContent(newForm)
     if (erro) {
       setError(await JSON.parse(erro))
       toast({
-        title: 'Não foi possível criar o serviço!',
+        title: 'Não foi possível criar o conteúdo!',
       })
       return
     } else {
       toast({
-        title: 'Serviço criado com sucesso!',
+        title: 'Conteúdo criado com sucesso!',
       })
     }
 
@@ -55,14 +55,20 @@ export function DialogCreateService({ children }: DialogCreateServiceProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Adicionar serviço</DialogTitle>
+          <DialogTitle>Adicionar conteúdo</DialogTitle>
           <DialogDescription>
-            Preencha as informações do serviço abaixo e clique em
+            Preencha as informações do conteúdo abaixo e clique em
             &rdquo;Salvar&rdquo; para incluí-lo no sistema.
+
+            <ul>
+              <li>Para adicionar um tópico, após a frase, utilize ";".</li>
+              <li>Para adicionar um texto, utilize "|" antes dele.</li>
+            </ul>
+
           </DialogDescription>
         </DialogHeader>
         <form action={submit}>
-          <FormFieldsService error={error} />
+          <FormFieldsContent error={error} />
         </form>
       </DialogContent>
     </Dialog>

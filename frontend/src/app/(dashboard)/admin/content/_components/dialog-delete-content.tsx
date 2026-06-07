@@ -1,6 +1,6 @@
 'use client'
 
-import { destroyService } from '@/actions/services'
+import { destroyContent } from '@/actions/content'
 import { Button } from '@/components/button'
 import {
   Dialog,
@@ -14,24 +14,24 @@ import {
 import { useToast } from '@/components/use-toast'
 import { useState } from 'react'
 
-interface DialogCreateServiceProps {
+interface DialogCreateContentProps {
   id: string
   children: React.ReactNode
 }
 
-export function DialogServiceDelete({ id, children }: DialogCreateServiceProps) {
+export function DialogContentDelete({ id, children }: DialogCreateContentProps) {
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
   const submit = async () => {
     try {
-      await destroyService(id)
+      await destroyContent(id)
       toast({
-        title: 'Serviço deletado com sucesso!',
+        title: 'Conteúdo deletado com sucesso!',
       })
     } catch (e) {
       toast({
-        title: 'Não foi possível excluir o serviço!',
+        title: 'Não foi possível excluir o conteúdo!',
       })
     }
     setOpen(false)
@@ -42,10 +42,10 @@ export function DialogServiceDelete({ id, children }: DialogCreateServiceProps) 
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Confirmar exclusão do serviço</DialogTitle>
+          <DialogTitle>Confirmar exclusão do conteúdo</DialogTitle>
           <DialogDescription>
-            Tem certeza de que deseja excluir este serviço? Esta ação é
-            irreversível e removerá permanentemente o serviço do sistema. Deseja
+            Tem certeza de que deseja excluir este conteúdo? Esta ação é
+            irreversível e removerá permanentemente o conteúdo do sistema. Deseja
             continuar com a exclusão?
           </DialogDescription>
         </DialogHeader>

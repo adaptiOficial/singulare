@@ -12,60 +12,48 @@ import { Input } from '@/components/input'
 import { Label } from '@/components/label'
 import { cn } from '@/lib/utils'
 import { ResponseErrorType } from '@/services/api'
-import { serviceType } from '@/types/service'
+import { contentType } from '@/types/content'
 import { useState } from 'react'
 import { useFormStatus } from 'react-dom'
 
-interface FormFieldsServiceProps {
-  service?: serviceType | null
+interface FormFieldsContentProps {
+  content?: contentType | null
   readOnly?: boolean
   error?: ResponseErrorType | null
 }
 
-export default function FormFieldsService({
-  service,
+export default function FormFieldsContent({
+  content,
   readOnly,
   error,
-}: FormFieldsServiceProps) {
+}: FormFieldsContentProps) {
   const { pending } = useFormStatus()
   const [updateImage, setUpdateImage] = useState<string | undefined>()
 
   return (
     <>
       <FormFieldsGroup>
-        {service && (
-          <Input defaultValue={service.id} type="text" name="id" hidden />
+        {content && (
+          <Input defaultValue={content.id} type="text" name="id" hidden />
         )}
         <FormField>
-          <Label htmlFor="title">Título</Label>
+          <Label htmlFor="text">Texto</Label>
           <Input
-            name="title"
-            id="title"
-            placeholder="Insira o título do serviço"
-            defaultValue={service?.title}
+            name="text"
+            id="text"
+            placeholder="Insira o conteúdo"
+            defaultValue={content?.text}
             disabled={pending}
             readOnly={readOnly}
-            error={error?.errors?.title}
+            error={error?.errors?.text}
           />
         </FormField>
-        <FormField>
-          <Label htmlFor="content">Subtítulo</Label>
-          <Input
-            name="content"
-            id="content"
-            type="content"
-            placeholder="Insira o subtítulo do serviço"
-            defaultValue={service?.content}
-            disabled={pending}
-            readOnly={readOnly}
-            error={error?.errors?.content}
-          />
-        </FormField>
+
         <FormField>
           <Label
             htmlFor="image"
-            hidden={readOnly && !service?.image}
-            required={!service}
+            hidden={readOnly && !content?.image}
+            required={!content}
           >
             Imagem
           </Label>
@@ -81,7 +69,7 @@ export default function FormFieldsService({
           />
           <ImageForm
             className="aspect-square size-40"
-            src={updateImage || service?.image}
+            src={updateImage || content?.image}
           />
         </FormField>
       </FormFieldsGroup>

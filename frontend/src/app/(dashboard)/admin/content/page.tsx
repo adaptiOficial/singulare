@@ -5,9 +5,9 @@ import {
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
 import { LuLayers } from 'react-icons/lu'
-import ListServices from './_components/list-services'
+import ListServices from './_components/list-content'
 import { Suspense } from 'react'
-import { SkeletonServices } from './_components/skeleton-services'
+import { SkeletonContent } from './_components/skeleton-content'
 
 export default async function Page({
   searchParams,
@@ -21,14 +21,14 @@ export default async function Page({
       <DashboardHeader>
         <DashboardHeaderTitle>
           <LuLayers />
-          Serviços
+          Conteúdo
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>
-          Cadastre, edite, visualize e exclua serviços.
+          Cadastre, edite, visualize e exclua conteúdo.
         </DashboardHeaderDescription>
       </DashboardHeader>
       <DashboardMain>
-        <Suspense fallback={<SkeletonServices />}>
+        <Suspense fallback={<SkeletonContent />}>
           <ListServices
             page={Number(page)}
             perPage={Number(perPage)}

@@ -12,32 +12,32 @@ import {
 } from '@/components/dashboard/table'
 import { api } from '@/services/api'
 import { paginationResponseType } from '@/types/pagination-response'
-import { serviceType } from '@/types/service'
+import { contentType } from '@/types/content'
 import { Button } from '@/components/button'
 import { LuInfo, LuPen, LuPlusCircle, LuTrash } from 'react-icons/lu'
-import { DialogUpdateService } from './dialog-update-service'
-import { DialogServiceDelete } from './dialog-delete-service'
-import { DialogInformationService } from './dialog-information-service'
+import { DialogUpdateContent } from './dialog-update-content'
+import { DialogContentDelete } from './dialog-delete-content'
+import { DialogInformationContent } from './dialog-information-content'
 import { PerPage } from '@/components/dashboard/per_page'
-import { DialogCreateService } from './dialog-create-service'
-import { FilterServices } from './filter-services'
+import { DialogCreateContent } from './dialog-create-content'
+import { FilterContent } from './filter-content'
 
-interface ListServicesProps {
+interface ListContentProps {
   page?: number
   perPage?: number
   title?: string
   content?: string
 }
 
-export default async function ListServices({
+export default async function ListContent({
   page,
   perPage,
   title,
   content,
-}: ListServicesProps) {
-  const { response } = await api<paginationResponseType<serviceType[]>>(
+}: ListContentProps) {
+  const { response } = await api<paginationResponseType<contentType[]>>(
     'GET',
-    '/services',
+    '/contents',
     {
       params: {
         page,
@@ -51,64 +51,64 @@ export default async function ListServices({
   if (!response) {
     return (
       <DashboardContainer className="text-destructive">
-        Não foi possível obter os serviços.
+        Não foi possível obter os conteúdos.
       </DashboardContainer>
     )
   }
 
-  const services: serviceType[] = response?.data
+  const contents: contentType[] = response?.data
 
   return (
     <>
       <DashboardContainer className="flex h-min justify-end space-x-0 gap-y-2.5 max-sm:flex-col">
         
-        <DialogCreateService>
+        <DialogCreateContent>
           <Button size="sm">
             <LuPlusCircle />
-            Novo serviço
+            Novo conteúdo
           </Button>
-        </DialogCreateService>
+        </DialogCreateContent>
       </DashboardContainer>
       <DashboardContainer>
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Imagem</TableHead>
-              <TableHead>Título</TableHead>
+              <TableHead>Texto</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {services?.map((service: serviceType) => (
-              <TableRow key={service.id}>
+            {contents?.map((content: contentType) => (
+              <TableRow key={content.id}>
                 <TableCell>
-                  <TabbleCellImage src={service.image} />
+                  <TabbleCellImage src={content.image} />
                 </TableCell>
 
-                <TableCell>{service.title}</TableCell>
+                <TableCell>{content.text}</TableCell>
 
                 <TableCell className="flex justify-end gap-2">
-                  <DialogInformationService id={service.id}>
+                  <DialogInformationContent id={content.id}>
                     <Button variant="default-inverse" size="icon">
                       <LuInfo />
                     </Button>
-                  </DialogInformationService>
-                  <DialogUpdateService id={service.id}>
+                  </DialogInformationContent>
+                  <DialogUpdateContent id={content.id}>
                     <Button variant="secondary-inverse" size="icon">
                       <LuPen />
                     </Button>
-                  </DialogUpdateService>
-                  <DialogServiceDelete id={service.id}>
+                  </DialogUpdateContent>
+                  <DialogContentDelete id={content.id}>
                     <Button variant="destructive-inverse" size="icon">
                       <LuTrash />
                     </Button>
-                  </DialogServiceDelete>
+                  </DialogContentDelete>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
-          {!services?.length && (
-            <TableCaption> Nenhum serviço encontrado.</TableCaption>
+          {!contents?.length && (
+            <TableCaption> Nenhum conteúdo encontrado.</TableCaption>
           )}
         </Table>
       </DashboardContainer>

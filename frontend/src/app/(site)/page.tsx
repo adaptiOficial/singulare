@@ -15,6 +15,7 @@ import { useEffect, useState } from "react"
 import { api } from "@/services/api"
 import { useToast } from "@/components/use-toast"
 import { paginationResponseType } from "@/types/pagination-response"
+import { ContentsSection } from "./_components/contents"
 
 export default async function Home() {
   const { response } =
@@ -31,6 +32,7 @@ export default async function Home() {
     <Banner/>
     <AboutUs /> 
 
+    <ContentsSection />
     <FeedbacksSection />
     <FAQ/>
     
