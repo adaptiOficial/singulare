@@ -36,7 +36,7 @@ export function Facilitators() {
   }
 
   return (
-    <div className="flex flex-col items-center bg-cloudDancer gap-16 pb-24">
+    <div className="flex flex-col items-center bg-white gap-16 pb-24">
 
       <div className="flex justify-center w-full px-8 pt-16">
         <h1 className="text-3xl md:text-4xl font-semibold text-cinzaCarvao uppercase">
@@ -44,7 +44,7 @@ export function Facilitators() {
         </h1>
       </div>
 
-      <div className="flex flex-col gap-20 max-w-[1200px] w-full px-6 md:px-0">
+      <div className="flex flex-col gap-20 max-w-[1200px] w-full px-6 md:px-12 lg:px-16">
         {facilitators.map((facilitator, index) => {
           const ehPar = index % 2 === 0;
 
@@ -84,7 +84,6 @@ export function Facilitators() {
                   {facilitator.description}
                 </p>
 
-                <div className="md:hidden mt-12 h-[1px] bg-zinc-400 w-full opacity-50" />
               </div>
             </div>
           );
