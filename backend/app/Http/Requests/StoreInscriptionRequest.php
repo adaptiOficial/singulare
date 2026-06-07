@@ -25,7 +25,7 @@ class StoreInscriptionRequest extends FormRequest
             'telefone' => ['required', 'string', 'min:8', 'max:20'],
             'cpf_cnpj' => ['required', 'string', 'min:11', 'max:20'],
             'quantidade_inscricoes' => ['required', 'integer', 'min:1'],
-            'ramo_atividade' => ['required', 'string', 'min:3', 'max:255'],
+            'ramo_atividade' => ['nullable', 'string', 'min:3', 'max:255'],
         ];
     }
 
@@ -52,7 +52,6 @@ class StoreInscriptionRequest extends FormRequest
             'quantidade_inscricoes.integer' => 'O campo QUANTIDADE DE INSCRIÇÕES deve ser um número inteiro.',
             'quantidade_inscricoes.min' => 'O campo QUANTIDADE DE INSCRIÇÕES deve ser no mínimo 1.',
 
-            'ramo_atividade.required' => 'O campo RAMO DE ATIVIDADE é obrigatório.',
             'ramo_atividade.min' => 'O campo RAMO DE ATIVIDADE deve ter no mínimo 3 caracteres.',
             'ramo_atividade.max' => 'O campo RAMO DE ATIVIDADE deve ter no máximo 255 caracteres.',
         ];

@@ -17,6 +17,7 @@ import { DropdownMenuItem } from '@/components/dropdown-menu'
 import { signOut, useSession } from 'next-auth/react'
 import logo from '@/assets/img/logo.jpeg'
 import { FaWhatsapp } from 'react-icons/fa'
+import { LuDollarSign } from "react-icons/lu";
 
 export function SidebarMain() {
   const session = useSession()
@@ -41,9 +42,15 @@ export function SidebarMain() {
           <LuFileImage />
           <SidebarNavLinkLabel>Banner</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/contatos">
+
+        <SidebarNavLink href="/admin/price">
+          <LuDollarSign />
+          <SidebarNavLinkLabel>Preço</SidebarNavLinkLabel>
+        </SidebarNavLink>
+
+        <SidebarNavLink href="/admin/inscricoes">
           <LuMail />
-          <SidebarNavLinkLabel>Contatos</SidebarNavLinkLabel>
+          <SidebarNavLinkLabel>Inscrições</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/faq">
           <LuMessageCircle />

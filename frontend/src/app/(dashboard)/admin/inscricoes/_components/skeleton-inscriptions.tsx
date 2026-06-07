@@ -13,7 +13,7 @@ import { DialogFooter } from '@/components/dialog'
 import { Skeleton } from '@/components/skeleton'
 import { cn } from '@/lib/utils'
 
-export function SkeletonUsers() {
+export function SkeletonInscriptions() {
   return (
     <>
       <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
@@ -76,45 +76,6 @@ export function SkeletonUsers() {
           <Skeleton className="size-9" />
         </div>
       </DashboardContainer>
-    </>
-  )
-}
-
-interface SkeletonFormFieldsUserProps {
-  readOnly?: boolean
-}
-
-export default function SkeletonFormFieldsUser({
-  readOnly,
-}: SkeletonFormFieldsUserProps) {
-  return (
-    <>
-      <FormFieldsGroup>
-        <FormField>
-          <Skeleton className="h-5" />
-          <Skeleton className="h-10 col-span-3" />
-        </FormField>
-        <FormField>
-          <Skeleton className="h-5" />
-          <Skeleton className="h-10 col-span-3" />
-        </FormField>
-        <FormField hidden={readOnly}>
-          <Skeleton className="h-5" />
-          <Skeleton className="h-10 col-span-3" />
-        </FormField>
-        <FormField hidden={readOnly}>
-          <Skeleton className="h-5" />
-          <Skeleton className="h-10 col-span-3" />
-        </FormField>
-        <FormField>
-          <Skeleton className="h-5" />
-          <Skeleton className="h-10 col-span-3" hidden={readOnly} />
-          <Skeleton className="size-40 col-start-2" />
-        </FormField>
-      </FormFieldsGroup>
-      <DialogFooter className={cn({ hidden: readOnly })}>
-        <Skeleton className="h-10 w-24" />
-      </DialogFooter>
     </>
   )
 }

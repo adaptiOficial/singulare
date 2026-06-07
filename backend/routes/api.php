@@ -15,6 +15,7 @@ use App\Http\Controllers\CompanyInformationController;
 use App\Http\Controllers\FacilitatorController;
 use App\Http\Controllers\InscriptionsController;
 use App\Http\Controllers\MoreInformationController;
+use App\Http\Controllers\PriceController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/profile', function (Request $request) {
@@ -27,11 +28,12 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::apiResource('/contents', ContentController::class)->except('index', 'show');
     Route::apiResource('/users', UserController::class);
     Route::apiResource('/banners', BannerController::class)->except('index', 'show');
+    Route::apiResource('/prices', PriceController::class)->except('index', 'show');
     Route::put('/companyinformation/{id}', [CompanyInformationController::class, 'update']);
     Route::put('/moreinformation/{id}', [MoreInformationController::class, 'update']);
     Route::apiResource('/feedbacks', FeedbackController::class)->except('index');
     Route::apiResource('/faq', FaqController::class)->except('index');
-    Route::apiResource('/inscriptions', InscriptionsController::class);
+    Route::apiResource('/inscriptions', InscriptionsController::class)->except('store');
     
     Route::apiResource('/facilitator', FacilitatorController::class)->except('index', 'show');
 });
@@ -43,6 +45,8 @@ Route::get('/', function () {
 });
 
 Route::get('/feedbacks', [FeedbackController::class, 'index']);
+
+Route::post('/inscriptions', [InscriptionsController::class, 'store']);
 
 Route::get('/faq', [FaqController::class, 'index']);
 Route::get('/faq-all', [FaqController::class, 'getAll']);
@@ -57,6 +61,9 @@ Route::apiResource('/about-us', AboutUsController::class)->except('index', 'show
 
 Route::get('/banners', [BannerController::class, 'index']);
 Route::get('/banners/{id}', [BannerController::class, 'show']);
+
+Route::get('/prices', [PriceController::class, 'index']);
+Route::get('/prices/{id}', [PriceController::class, 'show']);
 
 Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/about-us/{id}', [AboutUsController::class, 'show']);

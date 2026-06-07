@@ -27,6 +27,9 @@ class InscriptionsController extends Controller
             ->when($request->has('nome'), function ($query) use ($request) {
                 $query->where('nome', 'like', "%{$request->nome}%");
             })
+            ->when($request->has('done'), function ($query) use ($request) {
+                $query->where('done', $request->done);
+            })
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 

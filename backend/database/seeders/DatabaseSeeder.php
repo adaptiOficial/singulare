@@ -10,6 +10,7 @@ use App\Models\Content;
 use App\Models\User;
 use App\Models\CompanyInformation;
 use App\Models\MoreInformation;
+use App\Models\Price;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         LinkWpp::factory(1)->create();
         Banner::factory(1)->create();
+        Price::factory(1)->create();
         
         AboutUs::factory(1)->create();
         Content::factory(3)->create();

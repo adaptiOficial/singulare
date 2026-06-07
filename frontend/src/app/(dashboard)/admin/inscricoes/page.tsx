@@ -5,9 +5,9 @@ import {
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
 import { LuMail } from 'react-icons/lu'
-import ListContacts from './_components/list-contacts'
 import { Suspense } from 'react'
-import { SkeletonUsers } from './_components/skeleton-contacts'
+import { SkeletonInscriptions } from './_components/skeleton-inscriptions'
+import ListInscriptions from './_components/list-inscriptions'
 
 export default async function Page({
   searchParams,
@@ -18,24 +18,22 @@ export default async function Page({
 
   return (
     <>
-    
       <DashboardHeader>
-         <DashboardHeaderTitle>
-    <LuMail />
-    Contatos
-  </DashboardHeaderTitle>
+        <DashboardHeaderTitle>
+          <LuMail />
+          Inscrições
+        </DashboardHeaderTitle>
 
-  <DashboardHeaderDescription>
-    Visualize e gerencie as mensagens enviadas pelo formulário de contato.
-  </DashboardHeaderDescription>
-</DashboardHeader>
+        <DashboardHeaderDescription>
+          Visualize e gerencie as inscrições realizadas no sistema.
+        </DashboardHeaderDescription>
+      </DashboardHeader>
       <DashboardMain>
-        <Suspense fallback={<SkeletonUsers />}>
-          <ListContacts
+        <Suspense fallback={<SkeletonInscriptions />}>
+          <ListInscriptions
             done={done as string}
             page={Number(page)}
             perPage={Number(perPage)}
-            
           />
         </Suspense>
       </DashboardMain>

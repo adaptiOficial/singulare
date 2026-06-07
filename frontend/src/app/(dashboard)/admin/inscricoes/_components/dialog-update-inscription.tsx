@@ -1,6 +1,6 @@
 'use client'
 
-import { updateContactDone } from '@/actions/contact'
+import { updateInscriptionDone } from '@/actions/inscription'
 import { Button } from '@/components/button'
 import {
   Dialog,
@@ -14,28 +14,28 @@ import {
 import { useToast } from '@/components/use-toast'
 import { useState } from 'react'
 
-interface DialogContactDoneProps {
+interface DialogInscriptionDoneProps {
   id: string
   children: React.ReactNode
 }
 
-export function DialogContactDone({ id, children }: DialogContactDoneProps) {
+export function DialogInscriptionDone({ id, children }: DialogInscriptionDoneProps) {
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
   const submit = async () => {
      const newForm = new FormData()
-     newForm.append('id',id);
-     newForm.append('done','1');
-    const { error } = await JSON.parse(await updateContactDone(newForm))
+     newForm.append('id', id);
+     newForm.append('done', '1');
+     const { error } = await JSON.parse(await updateInscriptionDone(newForm))
 
     if (error) {
       toast({
-        title: 'Não foi possível atualizar o contato!',
+        title: 'Não foi possível confirmar a inscrição!',
       })
     } else {
       toast({
-        title: 'Contato marcado como resolvido!',
+        title: 'Inscrição confirmada com sucesso!',
       })
     }
 
@@ -48,10 +48,10 @@ export function DialogContactDone({ id, children }: DialogContactDoneProps) {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Marcar contato como resolvido</DialogTitle>
+          <DialogTitle>Confirmar inscrição</DialogTitle>
           <DialogDescription>
-            Tem certeza de que deseja marcar este contato como resolvido? Após
-            confirmar, ele será marcado como concluído no sistema.
+            Tem certeza de que deseja confirmar esta inscrição? Após
+            confirmar, ela será marcada como confirmada no sistema.
           </DialogDescription>
         </DialogHeader>
 

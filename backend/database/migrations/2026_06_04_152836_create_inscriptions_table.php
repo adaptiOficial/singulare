@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('telefone');
             $table->string('cpf_cnpj');
             $table->integer('quantidade_inscricoes');
-            $table->string('ramo_atividade');
+            $table->string('ramo_atividade')->nullable();
+            $table->enum('done', ['0', '1'])->default('0');
             $table->timestamps();
         });
     }

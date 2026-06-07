@@ -25,7 +25,8 @@ class UpdateInscriptionRequest extends FormRequest
             'telefone' => ['sometimes', 'string', 'min:8', 'max:20'],
             'cpf_cnpj' => ['sometimes', 'string', 'min:11', 'max:20'],
             'quantidade_inscricoes' => ['sometimes', 'integer', 'min:1'],
-            'ramo_atividade' => ['sometimes', 'string', 'min:3', 'max:255'],
+            'ramo_atividade' => ['nullable', 'string', 'min:3', 'max:255'],
+            'done' => ['sometimes', 'string', 'in:0,1'],
         ];
     }
 

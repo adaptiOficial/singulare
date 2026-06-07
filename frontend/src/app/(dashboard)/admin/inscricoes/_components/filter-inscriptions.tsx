@@ -3,7 +3,7 @@
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { Button } from '@/components/button'
 
-export function ContactStatusFilter() {
+export function InscriptionStatusFilter() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const pathname = usePathname()
@@ -45,7 +45,7 @@ export function ContactStatusFilter() {
         variant={currentStatus === '1' ? 'default' : 'outline'}
         onClick={() => setFilter('1')}
       >
-        Resolvidos
+        Confirmadas
       </Button>
     </div>
   )

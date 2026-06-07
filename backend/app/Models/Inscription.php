@@ -16,6 +16,7 @@ class Inscription extends Model
         'telefone',
         'cpf_cnpj',
         'quantidade_inscricoes',
-        'ramo_atividade'
+        'ramo_atividade',
+        'done'
     ];
 }
