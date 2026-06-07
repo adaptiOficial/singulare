@@ -2,7 +2,6 @@
 
 import React, {
   useCallback,
-  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -74,14 +73,15 @@ export default function Slider({
   const swiperRef = useRef<SwiperRef | null>(null)
   const elementRef = useRef<HTMLDivElement>(null)
 
-  // Repete os itens caso o total seja menor do que os slides por view
-  if (items.length < itemsPerSlide) {
-    const originalItemsLength = items.length
-    const itemsToAdd = itemsPerSlide - (originalItemsLength % itemsPerSlide)
-    for (let i = 0; i < itemsToAdd; i++) {
-      items.push(items[i % originalItemsLength])
+  const displayItems = React.useMemo(() => {
+    if (!loopInfinite) return items
+    const original = [...items]
+    const result = [...items]
+    while (result.length < itemsPerSlide * 3) {
+      result.push(...original)
     }
-  }
+    return result
+  }, [items, loopInfinite, itemsPerSlide])
 
   useLayoutEffect(() => {
     const handleResize = () => {
@@ -114,9 +114,7 @@ export default function Slider({
 
   return (
     <div className="flex gap-5 max-sm:gap-0 w-full relative" ref={elementRef}>
-      <div
-        className="w-full overflow-hidden"
-      >
+      <div className="w-full overflow-hidden">
         <Swiper
           ref={swiperRef}
           grabCursor={true}
@@ -140,7 +138,7 @@ export default function Slider({
           centeredSlides={centeredSlides}
           speed={5000}
         >
-          {items.map((item, i) => (
+          {displayItems.map((item, i) => (
             <SwiperSlide
               key={i}
               className={`${withThumbs && pagination && navItems && !insideArrow ? 'pb-14' : ''} ${fullScreen ? 'w-full h-screen' : ''}`}
@@ -157,7 +155,7 @@ export default function Slider({
           <div className="swiper-pagination"></div>
         </Swiper>
       </div>
-      {itemsPerSlide < items.length && navItems && (
+      {itemsPerSlide < displayItems.length && navItems && (
         <>
           <div
             className={
