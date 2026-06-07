@@ -28,8 +28,8 @@ class CourseRequest extends FormRequest
             'title'           => ['string', 'min:3', 'max:255'],
             'primary_image'   => ['image'],
             'secondary_image' => ['image'],
-            'primary_text'    => ['string', 'min:3', 'max:500'],
-            'secondary_text'  => ['string', 'min:3', 'max:500'],
+            'primary_text'    => ['string', 'min:3', 'max:2000'],
+            'secondary_text'  => ['string', 'min:3', 'max:2000'],
         ];
 
         if ($this->isMethod('post')) {
@@ -59,15 +59,21 @@ class CourseRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required'           => 'O campo TÍTULO é obrigatório.',
-            'title.min'                => 'O campo TÍTULO deve conter no mínimo 3 caracteres.',
-            'title.max'                => 'O campo TÍTULO deve conter no máximo 255 caracteres.',
-            'primary_image.required'   => 'A imagem PRINCIPAL é obrigatória.',
-            'primary_image.image'      => 'A imagem PRINCIPAL deve ser um arquivo de imagem válido.',
-            'secondary_image.image'    => 'A imagem SECUNDÁRIA deve ser um arquivo de imagem válido.',
-            'primary_text.required'    => 'O campo TEXTO PRINCIPAL é obrigatório.',
-            'primary_text.min'         => 'O campo TEXTO PRINCIPAL deve conter no mínimo 3 caracteres.',
-            'secondary_text.min'       => 'O campo TEXTO SECUNDÁRIO deve conter no mínimo 3 caracteres.',
+            'title.required' => 'O campo TÍTULO é obrigatório.',
+            'title.min' => 'O campo TÍTULO deve conter no mínimo 3 caracteres.',
+            'title.max' => 'O campo TÍTULO deve conter no máximo 255 caracteres.',
+
+            'primary_image.required' => 'A imagem PRINCIPAL é obrigatória.',
+            'primary_image.image' => 'A imagem PRINCIPAL deve ser um arquivo de imagem válido.',
+
+            'secondary_image.image' => 'A imagem SECUNDÁRIA deve ser um arquivo de imagem válido.',
+
+            'primary_text.required' => 'O campo TEXTO PRINCIPAL é obrigatório.',
+            'primary_text.min' => 'O campo TEXTO PRINCIPAL deve conter no mínimo 3 caracteres.',
+            'primary_text.max' => 'O campo TEXTO PRINCIPAL deve conter no máximo 2000 caracteres.',
+
+            'secondary_text.min' => 'O campo TEXTO SECUNDÁRIO deve conter no mínimo 3 caracteres.',
+            'secondary_text.max' => 'O campo TEXTO SECUNDÁRIO deve conter no máximo 2000 caracteres.',
         ];
     }
 }
