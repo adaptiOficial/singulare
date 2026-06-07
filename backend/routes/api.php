@@ -4,9 +4,9 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\LinkWppController;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,12 +33,9 @@ Route::middleware(['auth:sanctum', 'can:admin'])->group(function () {
     Route::put('/moreinformation/{id}', [MoreInformationController::class, 'update']);
     Route::apiResource('/feedbacks', FeedbackController::class)->except('index');
     Route::apiResource('/faq', FaqController::class)->except('index');
-    Route::apiResource('/inscriptions', InscriptionsController::class)->except('store');
-    
+    Route::apiResource('/inscriptions', InscriptionsController::class)->except('store'); 
     Route::apiResource('/facilitator', FacilitatorController::class)->except('index', 'show');
 });
-
-
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
@@ -57,7 +54,7 @@ Route::get('/moreinformation', [MoreInformationController::class, 'index']);
 
 Route::get('/link-wpp', [LinkWppController::class, 'index']);
 Route::get('/link-wpp/{id}', [LinkWppController::class, 'show']);
-Route::apiResource('/about-us', AboutUsController::class)->except('index', 'show');
+Route::apiResource('/courses', CourseController::class)->except('index', 'show');
 
 Route::get('/banners', [BannerController::class, 'index']);
 Route::get('/banners/{id}', [BannerController::class, 'show']);
@@ -65,8 +62,8 @@ Route::get('/banners/{id}', [BannerController::class, 'show']);
 Route::get('/prices', [PriceController::class, 'index']);
 Route::get('/prices/{id}', [PriceController::class, 'show']);
 
-Route::get('/about-us', [AboutUsController::class, 'index']);
-Route::get('/about-us/{id}', [AboutUsController::class, 'show']);
+Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses/{id}', [CourseController::class, 'show']);
 
 Route::get('/contents', [ContentController::class, 'index']);
 Route::get('/contents/{id}', [ContentController::class, 'show']);

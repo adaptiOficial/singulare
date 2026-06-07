@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\LinkWpp;
 use App\Models\Banner;
 use App\Models\MyHistory;
-use App\Models\AboutUs;
+use App\Models\Course;
 use App\Models\Content;
 use App\Models\User;
 use App\Models\CompanyInformation;
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         Banner::factory(1)->create();
         Price::factory(1)->create();
         
-        AboutUs::factory(1)->create();
+        Course::factory(1)->create();
         Content::factory(3)->create();
 
         $user = User::factory()->create([
