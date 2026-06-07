@@ -9,7 +9,7 @@ import { Banner } from "./_components/banner"
 import WppButton from "@/components/whatsapp-button"
 import { FeedbacksSection } from "./_components/feedbacks"
 
-import Investimento from "./_components/investimento"
+import Preco from "./_components/preco"
 import { linkWppType } from '@/types/linkWpp';
 import { useEffect, useState } from "react"
 import { api } from "@/services/api"
@@ -34,7 +34,7 @@ export default async function Home() {
     <FeedbacksSection />
     <FAQ/>
     
-    <Investimento />
+    <Preco />
     <InscriptionForm />  
     <Footer/>
     <WaterMark/>
