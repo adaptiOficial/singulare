@@ -19,10 +19,10 @@ import {
 } from '@/components/dashboard/filter'
 
 interface FilterBannersProps {
-  text?: string
+  title?: string
 }
 
-export function FilterBanners({ text }: FilterBannersProps) {
+export function FilterBanners({ title }: FilterBannersProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -31,7 +31,7 @@ export function FilterBanners({ text }: FilterBannersProps) {
   const [hasFilters, setHasFilters] = useState(false)
 
   useEffect(() => {
-    setHasFilters(checkFilters(['text'], searchParams))
+    setHasFilters(checkFilters(['title'], searchParams))
   }, [searchParams])
 
   return (
@@ -47,10 +47,10 @@ export function FilterBanners({ text }: FilterBannersProps) {
           action={() => applyFilter(formRef, searchParams, router, pathname)}
         >
           <Input
-            name="text"
-            placeholder="Texto do banner"
+            name="title"
+            placeholder="Título do banner"
             size="sm"
-            defaultValue={text}
+            defaultValue={title}
           />
 
           <Button size="sm" type="submit">

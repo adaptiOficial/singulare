@@ -24,13 +24,13 @@ import { FilterBanners } from './filter-banners'
 interface ListBannersProps {
   page?: number
   perPage?: number
-  text?: string
+  title?: string
 }
 
 export default async function ListBanners({
   page,
   perPage,
-  text,
+  title,
 }: ListBannersProps) {
   const { response } = await api<paginationResponseType<bannerType[]>>(
     'GET',
@@ -39,7 +39,7 @@ export default async function ListBanners({
       params: {
         page,
         per_page: perPage,
-        text,
+        title,
       },
     },
   )
@@ -62,7 +62,7 @@ export default async function ListBanners({
           <TableHeader>
             <TableRow>
               <TableHead>Imagem</TableHead>
-              <TableHead>Texto</TableHead>
+              <TableHead>Título</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
@@ -73,7 +73,7 @@ export default async function ListBanners({
                   <TabbleCellImage src={banner.image} />
                 </TableCell>
 
-                <TableCell>{banner.text}</TableCell>
+                <TableCell>{banner.title}</TableCell>
 
                 <TableCell className="flex justify-end gap-2">
                   <DialogInformationBanner id={banner.id}>

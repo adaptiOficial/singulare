@@ -37,15 +37,39 @@ export default function FormFieldsBanner({
           <Input defaultValue={banner.id} type="text" name="id" hidden />
         )}
         <FormField>
-          <Label htmlFor="text">Texto</Label>
+          <Label htmlFor="title">Título</Label>
           <Input
-            name="text"
-            id="text"
-            placeholder="Insira o texto do banner"
-            defaultValue={banner?.text}
+            name="title"
+            id="title"
+            placeholder="Insira o título do banner"
+            defaultValue={banner?.title}
             disabled={pending}
             readOnly={readOnly}
-            error={error?.errors?.text}
+            error={error?.errors?.title}
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="subtitle">Subtítulo</Label>
+          <Input
+            name="subtitle"
+            id="subtitle"
+            placeholder="Insira o subtítulo do banner"
+            defaultValue={banner?.subtitle}
+            disabled={pending}
+            readOnly={readOnly}
+            error={error?.errors?.subtitle}
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="button_text">Texto do Botão</Label>
+          <Input
+            name="button_text"
+            id="button_text"
+            placeholder="Insira o texto do botão"
+            defaultValue={banner?.button_text}
+            disabled={pending}
+            readOnly={readOnly}
+            error={error?.errors?.button_text}
           />
         </FormField>
         <FormField>

@@ -28,7 +28,6 @@ class BannerRequest extends FormRequest
             'title' => ['string', 'min:3', 'max:200'],
             'subtitle' => ['nullable', 'string', 'max:255'],
             'button_text' => ['nullable', 'string', 'max:50'],
-            'button_link' => ['nullable', 'max:255'],
             'image' => ['image'],
         ];
 
@@ -54,8 +53,6 @@ class BannerRequest extends FormRequest
             'title.required' => 'O campo TÍTULO é obrigatório.',
             'title.min' => 'O campo TÍTULO deve conter no mínimo 3 caracteres.',
             'title.max' => 'O campo TÍTULO deve conter no máximo 200 caracteres.',
-
-            'button_link.url' => 'O LINK DO BOTÃO deve ser uma URL válida.',
 
             'image.required' => 'O campo IMAGEM é obrigatório.',
             'image.image' => 'O campo IMAGEM deve conter apenas imagens.',
