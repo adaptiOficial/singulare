@@ -15,9 +15,9 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('primary_image')->nullable();
-            $table->string('secondary_image')->nullable();
             $table->text('primary_text');
-            $table->text('secondary_text');
+            $table->string('secondary_image')->nullable();
+            $table->text('secondary_text')->nullable();
             $table->timestamps();
         });
     }

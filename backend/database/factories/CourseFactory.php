@@ -14,8 +14,8 @@ class CourseFactory extends Factory
         return [
             'title'           => $this->faker->sentence(4),
             'primary_image'   => $this->faker->imageUrl(),
-            'secondary_image' => $this->faker->optional()->imageUrl(),
             'primary_text'    => $this->faker->paragraph(),
+            'secondary_image' => $this->faker->optional()->imageUrl(),
             'secondary_text'  => $this->faker->optional()->paragraph(),
         ];
     }
