@@ -74,12 +74,21 @@ export default function Slider({
   const elementRef = useRef<HTMLDivElement>(null)
 
   const displayItems = React.useMemo(() => {
+    console.log('items.length', items.length)
+    
     if (!loopInfinite) return items
+
+    if (items.length === 0) {
+      return []
+    }
+
     const original = [...items]
     const result = [...items]
+
     while (result.length < itemsPerSlide * 3) {
       result.push(...original)
     }
+
     return result
   }, [items, loopInfinite, itemsPerSlide])
 
