@@ -13,7 +13,7 @@ import { DialogFooter } from '@/components/dialog'
 import { Skeleton } from '@/components/skeleton'
 import { cn } from '@/lib/utils'
 
-export function SkeletonAboutUs() {
+export function SkeletonCourse() {
   return (
     <>
       <DashboardContainer className="flex h-min justify-between space-x-0 gap-y-2.5 max-sm:flex-col">
@@ -72,13 +72,13 @@ export function SkeletonAboutUs() {
   )
 }
 
-interface SkeletonFormFieldsAboutUsProps {
+interface SkeletonFormFieldsCourseProps {
   readOnly?: boolean
 }
 
-export default function SkeletonFormFieldsAboutUs({
+export default function SkeletonFormFieldsCourseUs({
   readOnly,
-}: SkeletonFormFieldsAboutUsProps) {
+}: SkeletonFormFieldsCourseProps) {
   return (
     <>
       <FormFieldsGroup>

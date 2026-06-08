@@ -2,7 +2,7 @@ import { Navbar } from "./_components/navbar"
 import { Footer } from "./_components/footer"
 import { InscriptionForm } from "./_components/inscriptionForm"
 import { FAQ } from "./_components/faq"
-import { AboutUs } from "./_components/aboutUs"
+import { Course } from "./_components/course"
 import { WaterMark } from "./_components/waterMark"
 
 import { Banner } from "./_components/banner"
@@ -30,10 +30,8 @@ export default async function Home() {
   <div className="min-h-screen w-full flex flex-col bg-white">
     <Navbar/>
     <Banner/>
-    <AboutUs /> 
-    <section id="conteudo">
-      <ContentsSection />
-    </section>
+    <Course /> 
+    <ContentsSection />
     <FeedbacksSection />
     <section id="faq"> 
       <FAQ/>

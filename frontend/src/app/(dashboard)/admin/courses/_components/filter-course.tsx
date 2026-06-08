@@ -18,11 +18,11 @@ import {
   ButtonFilter,
 } from '@/components/dashboard/filter'
 
-interface FilterAboutUsProps{
+interface FilterCourseProps{
   text?: string
 }
 
-export function FilterAboutUs({ text }: FilterAboutUsProps) {
+export function FilterCourse({ text }: FilterCourseProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -48,7 +48,7 @@ export function FilterAboutUs({ text }: FilterAboutUsProps) {
         >
           <Input
             name="text"
-            placeholder="Texto do sobre nós"
+            placeholder="Texto sobre o curso"
             size="sm"
             defaultValue={text}
           />
