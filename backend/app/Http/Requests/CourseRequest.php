@@ -27,9 +27,9 @@ class CourseRequest extends FormRequest
         $rules = [
             'title'           => ['string', 'min:3', 'max:255'],
             'primary_image'   => ['image'],
-            'secondary_image' => ['image'],
+            'secondary_image' => ['nullable', 'image'],
             'primary_text'    => ['string', 'min:3', 'max:2000'],
-            'secondary_text'  => ['string', 'min:3', 'max:2000'],
+            'secondary_text'  => ['nullable', 'string', 'min:3', 'max:2000'],
         ];
 
         if ($this->isMethod('post')) {

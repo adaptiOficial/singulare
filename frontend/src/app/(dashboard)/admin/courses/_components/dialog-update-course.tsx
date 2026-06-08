@@ -8,35 +8,36 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsAboutUs from './form-fields-aboutUs'
-import { updateAboutUs } from '@/actions/aboutUs'
+import FormFieldsCourseUs from './form-fields-course'
+import { updateCourse } from '@/actions/course'
 import { filterFormData } from '@/services/filter-form-data'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
-import { aboutUsType } from '@/types/aboutUs'
+import { courseType } from '@/types/course'
 import { ResponseErrorType, api } from '@/services/api'
+import FormFieldsCourse from './form-fields-course'
 
-interface DialogUpdateAboutUsProps {
+interface DialogUpdateCourseProps {
   id: string
   children: React.ReactNode
 }
 
-export function DialogUpdateAboutUs({ id, children }: DialogUpdateAboutUsProps) {
-  const [aboutUs, setAboutUs] = useState<aboutUsType | null>(null)
+export function DialogUpdateCourse({ id, children }: DialogUpdateCourseProps) {
+  const [course, setCourse] = useState<courseType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const [error, setError] = useState<ResponseErrorType | null>(null)
   const { toast } = useToast()
 
   useEffect(() => {
     const requestData = async () => {
-      const { response } = await api<aboutUsType>('GET', `/about-us/${id}`)
+      const { response } = await api<courseType>('GET', `/courses/${id}`)
 
       if (response) {
-        setAboutUs(response)
+        setCourse(response)
       } else {
-        setAboutUs(null)
+        setCourse(null)
         toast({
-          title: 'Sobre nós não encontrado!',
+          title: 'Sobre curso não encontrado!',
         })
         setOpen(false)
       }
@@ -53,16 +54,16 @@ export function DialogUpdateAboutUs({ id, children }: DialogUpdateAboutUsProps) 
     setError(null)
     const newForm = await filterFormData(form)
 
-    const error = await updateAboutUs(newForm)
+    const error = await updateCourse(newForm)
     if (error) {
       setError(await JSON.parse(error))
       toast({
-        title: 'Não foi possível editar o sobre nós!',
+        title: 'Não foi possível editar sobre o curso!',
       })
       return
     } else {
       toast({
-        title: 'Sobre nós editado com sucesso!',
+        title: 'Sobre curso editado com sucesso!',
       })
     }
     setOpen(false)
@@ -73,15 +74,17 @@ export function DialogUpdateAboutUs({ id, children }: DialogUpdateAboutUsProps) 
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Editar sobre nós</DialogTitle>
+          <DialogTitle>Editar sobre o curso</DialogTitle>
           <DialogDescription>
-            Atualize as informações do sobre nós abaixo e clique em
+            Atualize as informações sobre o curso abaixo e clique em
             &quot;Salvar&quot; para aplicar as alterações.
           </DialogDescription>
         </DialogHeader>
-        <form action={submit}>
-          <FormFieldsAboutUs error={error} aboutUs={aboutUs} />
-        </form>
+        <div className='max-h-[70vh] overflow-y-auto pr-2'>
+          <form action={submit}>
+            <FormFieldsCourse error={error} course={course} />
+          </form>
+        </div>
       </DialogContent>
     </Dialog>
   )

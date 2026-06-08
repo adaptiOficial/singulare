@@ -8,36 +8,36 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsAboutUs from './form-fields-aboutUs'
-import { aboutUsType } from '@/types/aboutUs'
+import FormFieldsCourse from './form-fields-course'
+import { courseType } from '@/types/course'
 import { api } from '@/services/api'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 
-interface DialogInformationAboutUsProps {
+interface DialogInformationCourseProps {
   id: string
   children: React.ReactNode
   isInformation?: boolean
 }
 
-export function DialogInformationAboutUs({
+export function DialogInformationCourse({
   id,
   children,
-}: DialogInformationAboutUsProps) {
-  const [aboutUs, setAboutUs] = useState<aboutUsType | null>(null)
+}: DialogInformationCourseProps) {
+  const [course, setCourse] = useState<courseType | null>(null)
   const [open, setOpen] = useState<boolean>()
   const { toast } = useToast()
 
   useEffect(() => {
     const requestData = async () => {
-      const { response } = await api<aboutUsType>('GET', `/about-us/${id}`)
+      const { response } = await api<courseType>('GET', `/courses/${id}`)
 
       if (response) {
-        setAboutUs(response)
+        setCourse(response)
       } else {
-        setAboutUs(null)
+        setCourse(null)
         toast({
-          title: 'Sobre nós não encontrado!',
+          title: 'Sobre curso não encontrado!',
         })
         setOpen(false)
       }
@@ -52,15 +52,15 @@ export function DialogInformationAboutUs({
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Informações do sobre nós</DialogTitle>
+          <DialogTitle>Informações sobre o curso</DialogTitle>
           <DialogDescription>
-            Visualize as informações detalhadas do sobre nós abaixo.
+            Visualize as informações detalhadas sobre o curso abaixo.
           </DialogDescription>
         </DialogHeader>
-        {aboutUs ? (
-          <FormFieldsAboutUs aboutUs={aboutUs} readOnly />
+        {course ? (
+          <FormFieldsCourse course={course} readOnly />
         ) : (
-          <FormFieldsAboutUs readOnly />
+          <FormFieldsCourse readOnly />
         )}
       </DialogContent>
     </Dialog>

@@ -11,7 +11,7 @@ import {
   SidebarHeaderLogo,
   UserDropdown,
 } from '@/components/dashboard/sidebar'
-import { LuFileImage, LuBookOpen, LuHome, LuLayers, LuLogOut, LuMessageCircle, LuMail, LuUsers, LuContact, LuPresentation } from 'react-icons/lu'
+import { LuInfo, LuFileImage, LuBookOpen, LuHome, LuLayers, LuLogOut, LuMessageCircle, LuMail, LuUsers, LuContact, LuPresentation } from 'react-icons/lu'
 import { AiOutlineContainer } from "react-icons/ai";
 import { DropdownMenuItem } from '@/components/dropdown-menu'
 import { signOut, useSession } from 'next-auth/react'
@@ -72,9 +72,9 @@ export function SidebarMain() {
           <FaWhatsapp />
           <SidebarNavLinkLabel>Link WhatsApp</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/about-us">
+        <SidebarNavLink href="/admin/courses">
           <LuBookOpen />
-          <SidebarNavLinkLabel>Sobre nós</SidebarNavLinkLabel>
+          <SidebarNavLinkLabel>Sobre o curso</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/content">
           <LuLayers />

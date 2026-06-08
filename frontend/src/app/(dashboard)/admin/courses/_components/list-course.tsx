@@ -12,29 +12,29 @@ import {
 } from '@/components/dashboard/table'
 import { api } from '@/services/api'
 import { paginationResponseType } from '@/types/pagination-response'
-import { aboutUsType } from '@/types/aboutUs'
+import { courseType } from '@/types/course'
 import { Button } from '@/components/button'
 import { LuInfo, LuPen, LuPlusCircle, LuTrash } from 'react-icons/lu'
-import { DialogUpdateAboutUs } from './dialog-update-aboutUs'
-import { DialogInformationAboutUs } from './dialog-information-aboutUs'
+import { DialogUpdateCourse } from './dialog-update-course'
+import { DialogInformationCourse } from './dialog-information-course'
 import { PerPage } from '@/components/dashboard/per_page'
-import { DialogCreateAboutUs } from './dialog-create-aboutUs'
-import { FilterAboutUs } from './filter-aboutUs'
+import { DialogCreateCourse } from './dialog-create-course'
+import { FilterCourse } from './filter-course'
 
-interface ListAboutUsProps {
+interface ListCourseProps {
   page?: number
   perPage?: number
   text?: string
 }
 
-export default async function ListAboutUs({
+export default async function ListCourse({
   page,
   perPage,
   text,
-}: ListAboutUsProps) {
-  const { response } = await api<paginationResponseType<aboutUsType[]>>(
+}: ListCourseProps) {
+  const { response } = await api<paginationResponseType<courseType[]>>(
     'GET',
-    '/about-us',
+    '/courses',
     {
       params: {
         page,
@@ -47,51 +47,71 @@ export default async function ListAboutUs({
   if (!response) {
     return (
       <DashboardContainer className="text-destructive">
-        Não foi possível obter os sobre nós.
+        Não foi possível obter sobre o curso.
       </DashboardContainer>
     )
   }
 
-  const aboutUs: aboutUsType[] = response?.data
+  const course: courseType[] = response?.data
 
   return (
     <>
     
+      <DashboardContainer className='flex h-min justify-end space-x-0 gap-y-2.5 max-sm:flex-col'>
+        <DialogCreateCourse>
+          <Button size="sm">
+            <LuPlusCircle/>
+            Novo Sobre Curso
+          </Button>
+        </DialogCreateCourse>
+      </DashboardContainer>
+
       <DashboardContainer>
         <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Imagem</TableHead>
               <TableHead>Texto</TableHead>
+              <TableHead>Imagem</TableHead>
+              <TableHead>Texto</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {aboutUs?.map((aboutUsItem: aboutUsType) => (
-              <TableRow key={aboutUsItem.id}>
+            {course?.map((courseItem: courseType) => (
+              <TableRow key={courseItem.id}>
+                <TableCell>{courseItem.title}</TableCell>
+
                 <TableCell>
-                  <TabbleCellImage src={aboutUsItem.image} />
+                  <TabbleCellImage src={courseItem.primary_image} />
                 </TableCell>
 
-                <TableCell>{aboutUsItem.text}</TableCell>
+                <TableCell>{courseItem.primary_text}</TableCell>
+
+                <TableCell>
+                  <TabbleCellImage src={courseItem.secondary_image} />
+                </TableCell>
+
+                <TableCell>{courseItem.secondary_text}</TableCell>
 
                 <TableCell className="flex justify-end gap-2">
-                  <DialogInformationAboutUs id={aboutUsItem.id}>
+                  <DialogInformationCourse id={courseItem.id}>
                     <Button variant="default-inverse" size="icon">
                       <LuInfo />
                     </Button>
-                  </DialogInformationAboutUs>
-                  <DialogUpdateAboutUs id={aboutUsItem.id}>
+                  </DialogInformationCourse>
+                  <DialogUpdateCourse id={courseItem.id}>
                     <Button variant="secondary-inverse" size="icon">
                       <LuPen />
                     </Button>
-                  </DialogUpdateAboutUs>
+                  </DialogUpdateCourse>
+
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
-          {!aboutUs?.length && (
-            <TableCaption> Nenhum sobre nós encontrado.</TableCaption>
+          {!course?.length && (
+            <TableCaption> Nada sobre o curso foram encontrado.</TableCaption>
           )}
         </Table>
       </DashboardContainer>

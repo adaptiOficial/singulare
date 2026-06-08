@@ -8,18 +8,18 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/dialog'
-import FormFieldsAboutUs from './form-fields-aboutUs'
-import { createAboutUs } from '@/actions/aboutUs'
+import FormFieldsCourse from './form-fields-course'
+import { createCourse } from '@/actions/course'
 import { filterFormData } from '@/services/filter-form-data'
 import { useEffect, useState } from 'react'
 import { useToast } from '@/components/use-toast'
 import { ResponseErrorType } from '@/services/api'
 
-interface DialogCreateAboutUsProps {
+interface DialogCreateCourseProps {
   children: React.ReactNode
 }
 
-export function DialogCreateAboutUs({ children }: DialogCreateAboutUsProps) {
+export function DialogCreateCourse({ children }: DialogCreateCourseProps) {
   const [open, setOpen] = useState<boolean>()
   const [error, setError] = useState<ResponseErrorType | null>(null)
   const { toast } = useToast()
@@ -34,16 +34,16 @@ export function DialogCreateAboutUs({ children }: DialogCreateAboutUsProps) {
     setError(null)
     const newForm = await filterFormData(form)
 
-    const erro = await createAboutUs(newForm)
+    const erro = await createCourse(newForm)
     if (erro) {
       setError(await JSON.parse(erro))
       toast({
-        title: 'Não foi possível criar o sobre nós!',
+        title: 'Não foi possível criar o sobre o curso!',
       })
       return
     } else {
       toast({
-        title: 'Sobre nós criado com sucesso!',
+        title: 'Sobre o curso criado com sucesso!',
       })
     }
 
@@ -55,15 +55,17 @@ export function DialogCreateAboutUs({ children }: DialogCreateAboutUsProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Adicionar sobre nós</DialogTitle>
+          <DialogTitle>Adicionar sobre o curso</DialogTitle>
           <DialogDescription>
-            Preencha as informações do sobre nós abaixo e clique em
+            Preencha as informações sobre o curso abaixo e clique em
             &rdquo;Salvar&rdquo; para incluí-lo no sistema.
           </DialogDescription>
         </DialogHeader>
-        <form action={submit}>
-          <FormFieldsAboutUs error={error} />
-        </form>
+        <div className='max-h-[70vh] overflow-y-auto pr-2'>
+          <form action={submit}>
+            <FormFieldsCourse error={error} />
+          </form>
+        </div>
       </DialogContent>
     </Dialog>
   )

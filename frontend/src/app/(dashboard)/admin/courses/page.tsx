@@ -5,9 +5,9 @@ import {
   DashboardMain,
 } from '@/components/dashboard/dashboard-items'
 import { LuBookOpen } from 'react-icons/lu'
-import ListAboutUs from './_components/list-aboutUs'
+import ListCourse from './_components/list-course'
 import { Suspense } from 'react'
-import { SkeletonAboutUs } from './_components/skeleton-aboutUs'
+import { SkeletonCourse } from './_components/skeleton-course'
 
 export default async function Page({
   searchParams,
@@ -21,15 +21,15 @@ export default async function Page({
       <DashboardHeader>
         <DashboardHeaderTitle>
           <LuBookOpen />
-          Sobre Nós
+          Sobre o curso
         </DashboardHeaderTitle>
         <DashboardHeaderDescription>
-          Edite, visualize e exclua o sobre nós.
+          Edite, visualize e exclua sobre o curso.
         </DashboardHeaderDescription>
       </DashboardHeader>
       <DashboardMain>
-        <Suspense fallback={<SkeletonAboutUs />}>
-          <ListAboutUs
+        <Suspense fallback={<SkeletonCourse />}>
+          <ListCourse
             page={Number(page)}
             perPage={Number(perPage)}
             text={text as string}
