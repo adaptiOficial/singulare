@@ -21,7 +21,6 @@ class BannerFactory extends Factory
             'title' => $this->faker->text(200),
             'subtitle' => $this->faker->text(200),
             'button_text' => $this->faker->text(50),
-            'button_link' => $this->faker->url(),
         ];
     }
 }

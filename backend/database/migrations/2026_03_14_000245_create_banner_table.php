@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('subtitle');
             $table->string('button_text');
-            $table->string('button_link');
             $table->string('image');
             $table->timestamps();
         });
