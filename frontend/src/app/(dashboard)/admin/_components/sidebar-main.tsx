@@ -11,7 +11,7 @@ import {
   SidebarHeaderLogo,
   UserDropdown,
 } from '@/components/dashboard/sidebar'
-import { LuFileImage, LuBookOpen, LuHome, LuLayers, LuLogOut, LuInfo, LuMessageCircle, LuMail, LuUsers, LuContact } from 'react-icons/lu'
+import { LuFileImage, LuBookOpen, LuHome, LuLayers, LuLogOut, LuMessageCircle, LuMail, LuUsers, LuContact, LuPresentation } from 'react-icons/lu'
 import { AiOutlineContainer } from "react-icons/ai";
 import { DropdownMenuItem } from '@/components/dropdown-menu'
 import { signOut, useSession } from 'next-auth/react'
@@ -59,6 +59,10 @@ export function SidebarMain() {
         <SidebarNavLink href="/admin/feedbacks">
            <LuMessageCircle />
            <SidebarNavLinkLabel>Feedbacks</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/facilitadores">
+          <LuPresentation />
+          <SidebarNavLinkLabel>Facilitadores</SidebarNavLinkLabel>
         </SidebarNavLink>
          <SidebarNavLink href="/admin/informacoesdaempresa">
           <LuContact  />

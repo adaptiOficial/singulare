@@ -47,5 +47,5 @@ export default async function Home() {
     <WppButton cellphone={linkWpp} size="sm" color="#25d366" className="bg-black rounded-full sm:p-4 p-3" /> 
   </div>
   )
-  
+
 }
