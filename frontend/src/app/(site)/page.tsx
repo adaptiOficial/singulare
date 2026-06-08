@@ -31,7 +31,6 @@ export default async function Home() {
     <Navbar/>
     <Banner/>
     <Course /> 
-
     <ContentsSection />
     <FeedbacksSection />
     <section id="faq"> 

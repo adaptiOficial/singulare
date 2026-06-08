@@ -34,7 +34,7 @@ export function Course() {
   return (
     <div className="container mb-24 flex flex-col items-center md:items-start px-4">
       
-      <h1 className="hidden md:block text-3xl font-bold text-left mb-10 lg:text-5xl">
+      <h1 className="hidden md:block text-3xl font-bold text-left mb-10 md:mb-14 md:ml-10 lg:ml-24 lg:text-5xl">
         Sobre o Curso
       </h1>
 
@@ -42,7 +42,7 @@ export function Course() {
         
         <div className="block w-full text-center md:text-left">
           
-          <div className="md:float-left md:mr-8 mb-6 md:mb-4 lg:w-[40%] shrink-0 flex justify-center md:block">
+          <div className="md:float-left md:mr-6 md:ml-8 mb-6 md:mb-4 lg:w-[40%] shrink-0 flex justify-center md:block">
             <div className="relative w-[320px] h-[240px] lg:w-full lg:h-auto">
               <div className="absolute bottom-3 right-4 w-full h-full bg-[#4BB5B8] rounded-3xl lg:contents" />
               <Image
@@ -59,7 +59,7 @@ export function Course() {
             Sobre o Curso
           </h1>
 
-          <h2 className="text-base font-semibold lg:text-2xl mb-3">{course.title}</h2>
+          <h2 className="text-base font-semibold lg:text-2xl mb-3 lg:mb-5">{course.title}</h2>
           <p className="text-base lg:text-2xl text-justify md:text-left leading-relaxed">
             {course.primary_text}
           </p>
