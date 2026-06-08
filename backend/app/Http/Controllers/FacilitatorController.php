@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FacilitatorRequest;
+use App\Http\Requests\UpdateFacilitatorRequest;
+use App\Http\Requests\StoreFacilitatorRequest;
 use App\Models\Facilitator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,13 +22,13 @@ class FacilitatorController extends Controller
 
     public function index(Request $request): JsonResponse
     {
-        $facilitator = $this->facilitator->newQuery()->when($request->has('search'), function($query) use ($request){
-            $query->where('text', 'like', '%'.$request->search.'%');
+        $facilitator = $this->facilitator->newQuery()->when($request->has('name'), function($query) use ($request){
+            $query->where('name', 'like', '%'.$request->name.'%');
         })->orderBy('id', 'desc')->paginate(10);
         return response()->json($facilitator, Response::HTTP_OK);
     }
 
-    public function store(FacilitatorRequest $request): JsonResponse
+    public function store(StoreFacilitatorRequest $request): JsonResponse
     {
         $data = $request->validated();
 
@@ -47,7 +48,7 @@ class FacilitatorController extends Controller
         return response()->json($facilitator, Response::HTTP_OK);
     }
 
-    public function update(FacilitatorRequest $request, string $id): JsonResponse
+    public function update(UpdateFacilitatorRequest $request, string $id): JsonResponse
     {
         $facilitator = $this->facilitator->findOrFail($id);
         $data = $request->validated();
