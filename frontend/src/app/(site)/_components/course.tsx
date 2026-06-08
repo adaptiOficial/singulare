@@ -69,22 +69,26 @@ export function Course() {
 
         <div className="block w-full text-center md:text-left">
           
-          <div className="md:float-right md:ml-8 mb-6 md:mb-4 lg:w-[40%] shrink-0 flex justify-center md:block">
-            <div className="relative w-[320px] h-[240px] lg:w-full lg:h-auto">
-              <div className="absolute bottom-3 right-4 w-full h-full bg-[#4BB5B8] rounded-3xl lg:contents" />
-              <Image
-                src={course.secondary_image}
-                alt="Imagem secundária"
-                width={512}
-                height={640}
-                className="relative z-10 object-cover rounded-3xl w-full h-full lg:w-[480px] lg:h-[550px] lg:rounded"
-              />
+          {course.secondary_image && (
+            <div className="md:float-right md:ml-8 mb-6 md:mb-4 lg:w-[40%] shrink-0 flex justify-center md:block">
+              <div className="relative w-[320px] h-[240px] lg:w-full lg:h-auto">
+                <div className="absolute bottom-3 right-4 w-full h-full bg-[#4BB5B8] rounded-3xl lg:contents" />
+                <Image
+                  src={course.secondary_image}
+                  alt="Imagem secundária"
+                  width={512}
+                  height={640}
+                  className="relative z-10 object-cover rounded-3xl w-full h-full lg:w-[480px] lg:h-[550px] lg:rounded"
+                />
+              </div>
             </div>
-          </div>
+          )}
 
-          <p className="text-base lg:text-2xl text-justify md:text-left leading-relaxed">
-            {course.secondary_text}
-          </p>
+          {course.secondary_text && (
+            <p className="text-base lg:text-2xl text-justify md:text-left leading-relaxed">
+              {course.secondary_text}
+            </p>
+          )}
         </div>
 
         <div className="hidden md:block md:h-[4px] md:bg-[#88D8DA] md:w-[40%] md:mr-auto lg:h-[4px] lg:bg-[#88D8DA] lg:w-[40%] lg:mr-auto clear-both" />
