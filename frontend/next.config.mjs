@@ -1,8 +1,29 @@
+const apiUrlString = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+const apiUrl = new URL(apiUrlString);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [process.env.NEXT_PUBLIC_API_DOMAIN, 'via.placeholder.com'],
+    remotePatterns: [
+      {
+        protocol: apiUrl.protocol.replace(':', ''),
+        hostname: apiUrl.hostname,
+        port: apiUrl.port,
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+        pathname: '/**',
+      }
+    ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
