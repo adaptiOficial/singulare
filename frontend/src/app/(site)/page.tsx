@@ -35,10 +35,11 @@ export default async function Home() {
     <section id="sobre">
       <Course /> 
     </section>
+    <MoreInformations/>
     <section id="conteudo">
       <ContentsSection />
     </section>
-    <Facilitators></Facilitators>
+    <Facilitators/>
     <FeedbacksSection />
     <section id="faq"> 
       <FAQ/>

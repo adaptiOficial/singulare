@@ -42,27 +42,37 @@ export function SidebarMain() {
           <LuFileImage />
           <SidebarNavLinkLabel>Banner</SidebarNavLinkLabel>
         </SidebarNavLink>
-
-        <SidebarNavLink href="/admin/price">
-          <LuDollarSign />
-          <SidebarNavLinkLabel>Preço</SidebarNavLinkLabel>
+        <SidebarNavLink href="/admin/courses">
+          <LuBookOpen />
+          <SidebarNavLinkLabel>Sobre o curso</SidebarNavLinkLabel>
         </SidebarNavLink>
-
-        <SidebarNavLink href="/admin/inscricoes">
-          <LuMail />
-          <SidebarNavLinkLabel>Inscrições</SidebarNavLinkLabel>
+        <SidebarNavLink href="/admin/maisinformacoes">
+          <LuInfo />
+          <SidebarNavLinkLabel>Mais Informações</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/faq">
-          <LuMessageCircle />
-          <SidebarNavLinkLabel>FAQs</SidebarNavLinkLabel>
+        <SidebarNavLink href="/admin/content">
+          <LuLayers />
+          <SidebarNavLinkLabel>Conteúdo</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/facilitadores">
+          <LuPresentation />
+          <SidebarNavLinkLabel>Facilitadores</SidebarNavLinkLabel>
         </SidebarNavLink>
         <SidebarNavLink href="/admin/feedbacks">
            <LuMessageCircle />
            <SidebarNavLinkLabel>Feedbacks</SidebarNavLinkLabel>
         </SidebarNavLink>
-        <SidebarNavLink href="/admin/facilitadores">
-          <LuPresentation />
-          <SidebarNavLinkLabel>Facilitadores</SidebarNavLinkLabel>
+        <SidebarNavLink href="/admin/faq">
+          <LuMessageCircle />
+          <SidebarNavLinkLabel>FAQs</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/price">
+          <LuDollarSign />
+          <SidebarNavLinkLabel>Preço</SidebarNavLinkLabel>
+        </SidebarNavLink>
+        <SidebarNavLink href="/admin/inscricoes">
+          <LuMail />
+          <SidebarNavLinkLabel>Inscrições</SidebarNavLinkLabel>
         </SidebarNavLink>
          <SidebarNavLink href="/admin/informacoesdaempresa">
           <LuContact  />
@@ -71,18 +81,6 @@ export function SidebarMain() {
         <SidebarNavLink href="/admin/link-wpp">
           <FaWhatsapp />
           <SidebarNavLinkLabel>Link WhatsApp</SidebarNavLinkLabel>
-        </SidebarNavLink>
-        <SidebarNavLink href="/admin/courses">
-          <LuBookOpen />
-          <SidebarNavLinkLabel>Sobre o curso</SidebarNavLinkLabel>
-        </SidebarNavLink>
-        <SidebarNavLink href="/admin/content">
-          <LuLayers />
-          <SidebarNavLinkLabel>Conteúdo</SidebarNavLinkLabel>
-        </SidebarNavLink>
-        <SidebarNavLink href="/admin/maisinformacoes">
-          <LuInfo />
-          <SidebarNavLinkLabel>Mais Informações</SidebarNavLinkLabel>
         </SidebarNavLink>
       </SidebarNav>
       <SidebarFooter>

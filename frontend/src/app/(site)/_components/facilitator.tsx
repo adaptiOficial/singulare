@@ -38,7 +38,7 @@ export function Facilitators() {
   return (
     <div className="flex flex-col items-center bg-white gap-16 pb-24">
 
-      <div className="flex justify-center w-full px-8 pt-16">
+      <div className="flex md:justify-start 2xl:justify-center justify-center w-full px-[10%] pt-16">
         <h1 className="lg:text-[48px] md:text-[36px] text-[26px] font-bold">
           Facilitadores
         </h1>
@@ -76,7 +76,7 @@ export function Facilitators() {
               </div>
 
               <div className="flex-1 flex flex-col justify-center text-center md:text-left">
-                <h3 className="text-2xl font-semibold mb-4 text-cinzaCarvao">
+                <h3 className="lg:text-4xl sm:text-2xl text-[18px] font-semibold mb-4 lg:mb-9 text-black">
                   {facilitator.name}
                 </h3>
 

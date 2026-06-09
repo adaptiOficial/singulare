@@ -22,7 +22,7 @@ export async function ContentsSection() {
             <h2 className="text-[26px] font-bold text-center
                     md:text-3xl md:text-left
                     lg:text-5xl lg:text-left
-                    mx-[10%]">
+                    ">
                     Conteúdo programático</h2>
             <div className='relative px-30 lg:px-0'>
                 <SliderContent

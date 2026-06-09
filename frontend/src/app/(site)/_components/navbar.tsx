@@ -9,7 +9,7 @@ export function Navbar() {
 
   return (
     <nav className="relative w-full bg-[#4BB5B8] text-white">
-      <div className="flex h-[10vh] items-center justify-between px-6 lg:px-16">
+      <div className="flex h-[13vh] items-center justify-between px-6 lg:px-16">
         {/* Logo */}
         <div className="flex items-center gap-4">
           <Image
