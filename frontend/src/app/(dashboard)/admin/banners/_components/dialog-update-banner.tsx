@@ -53,6 +53,13 @@ export function DialogUpdateBanner({ id, children }: DialogUpdateBannerProps) {
     setError(null)
     const newForm = await filterFormData(form)
 
+    if (!newForm.has('subtitle') && form.has('subtitle')) {
+      newForm.append('subtitle', '\0')
+    }
+    if (!newForm.has('button_text') && form.has('button_text')) {
+      newForm.append('button_text', '\0')
+    }
+
     const error = await updateBanner(newForm)
     if (error) {
       setError(await JSON.parse(error))

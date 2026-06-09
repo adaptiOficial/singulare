@@ -37,7 +37,13 @@ export default function FormFieldsBanner({
           <Input defaultValue={banner.id} type="text" name="id" hidden />
         )}
         <FormField>
-          <Label htmlFor="title">Título</Label>
+          <Label
+            htmlFor="title"
+            hidden={readOnly && !banner?.title}
+            required={!banner}
+          >
+            Título
+          </Label>
           <Input
             name="title"
             id="title"
@@ -49,7 +55,13 @@ export default function FormFieldsBanner({
           />
         </FormField>
         <FormField>
-          <Label htmlFor="subtitle">Subtítulo</Label>
+          <Label
+            htmlFor="subtitle"
+            hidden={readOnly && !banner?.subtitle}
+            required={!banner}
+          >
+            Subtítulo
+          </Label>
           <Input
             name="subtitle"
             id="subtitle"
@@ -61,7 +73,13 @@ export default function FormFieldsBanner({
           />
         </FormField>
         <FormField>
-          <Label htmlFor="button_text">Texto do Botão</Label>
+          <Label
+            htmlFor="button_text"
+            hidden={readOnly && !banner?.button_text}
+            required={!banner}
+          >
+            Texto do Botão
+          </Label>
           <Input
             name="button_text"
             id="button_text"
@@ -87,6 +105,7 @@ export default function FormFieldsBanner({
             accept="image/*"
             disabled={pending}
             hidden={readOnly}
+            readOnly={readOnly}
             onChange={(e) => handleImageChange(e, setUpdateImage)}
             error={error?.errors?.image}
           />

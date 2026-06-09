@@ -63,6 +63,8 @@ export default async function ListBanners({
             <TableRow>
               <TableHead>Imagem</TableHead>
               <TableHead>Título</TableHead>
+              <TableHead>Subtítulo</TableHead>
+              <TableHead>Nome do Botão</TableHead>
               <TableHead className="text-right">Ações</TableHead>
             </TableRow>
           </TableHeader>
@@ -74,6 +76,8 @@ export default async function ListBanners({
                 </TableCell>
 
                 <TableCell>{banner.title}</TableCell>
+                <TableCell>{banner.subtitle || '-'}</TableCell>
+                <TableCell>{banner.button_text || '-'}</TableCell>
 
                 <TableCell className="flex justify-end gap-2">
                   <DialogInformationBanner id={banner.id}>
