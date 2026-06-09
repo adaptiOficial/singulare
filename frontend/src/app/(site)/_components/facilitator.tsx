@@ -80,7 +80,7 @@ export function Facilitators() {
                   {facilitator.name}
                 </h3>
 
-                <p className="text-md text-black leading-relaxed whitespace-pre-line text-justify">
+                <p className="lg:text-2xl md:text-xl text-base text-black leading-relaxed whitespace-pre-line text-justify">
                   {facilitator.description}
                 </p>
 

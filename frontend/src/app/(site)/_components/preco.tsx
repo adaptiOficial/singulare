@@ -21,13 +21,20 @@ export default async function Preco() {
         Investimento
       </h1>
 
-      <Image
-        src={price.image}
-        alt="Imagem do Investimento"
-        className="self-center"
-        width={1114}
-        height={774}
-      />
+      <a
+        href={price.image}
+        target="_blank"
+        rel="noopener noreferrer"
+        className='self-center'
+      >
+        <Image
+          src={price.image}
+          alt="Imagem do Investimento"
+          className="cursor-pointer"
+          width={1114}
+          height={774}
+        />
+      </a>
     </div>
   )
 }
