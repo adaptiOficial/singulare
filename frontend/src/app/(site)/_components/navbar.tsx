@@ -33,7 +33,7 @@ export function Navbar() {
           <a href="#sobre">Sobre o Curso</a>
           <a href="#conteudo">Conteúdo</a>
           <a href="#inscricao">Inscrição</a>
-          <a href="#faq">Perguntas Frequentes</a>
+          <a href="#faq">Dúvidas Frequentes</a>
         </div>
 
         {/* Botão Mobile */}

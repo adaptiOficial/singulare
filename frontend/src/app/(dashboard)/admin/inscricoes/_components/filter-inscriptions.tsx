@@ -2,6 +2,7 @@
 
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { Button } from '@/components/button'
+import DownloadInscription from './download-inscriptions'
 
 export function InscriptionStatusFilter() {
   const searchParams = useSearchParams()
@@ -47,6 +48,10 @@ export function InscriptionStatusFilter() {
       >
         Confirmadas
       </Button>
+
+      <div className="ml-auto">
+        <DownloadInscription/>
+      </div>
     </div>
   )
 }

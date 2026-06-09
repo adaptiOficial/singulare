@@ -58,10 +58,7 @@ export function InscriptionForm() {
 
   return (
     <>
-    <div className="flex justify-left max-2xl:pl-[10%] pl-[10%] py-8">
-        <h1 className="lg:text-[48px] md:text-[36px] max-md:text-[22px] font-semibold self-start">Inscrição</h1>
-    </div>
-    <div className="flex flex-col items-center bg-[#4DADB0] py-16 px-[10%]">
+    <div className="flex flex-col items-center bg-[#4DADB0] md:py-24 py-16 px-[10%]">
       <div className="w-full max-w-6xl"> 
         <h1 className="lg:text-6xl md:text-4xl max-md:text-center text-[28px] font-bold text-white mb-10 md:ml-10 text-left">
           Faça sua inscrição

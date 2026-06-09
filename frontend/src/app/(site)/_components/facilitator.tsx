@@ -39,7 +39,7 @@ export function Facilitators() {
     <div className="flex flex-col items-center bg-white gap-16 pb-24">
 
       <div className="flex justify-center w-full px-8 pt-16">
-        <h1 className="text-3xl md:text-4xl font-semibold text-cinzaCarvao uppercase">
+        <h1 className="lg:text-[48px] md:text-[36px] text-[26px] font-bold">
           Facilitadores
         </h1>
       </div>
@@ -80,7 +80,7 @@ export function Facilitators() {
                   {facilitator.name}
                 </h3>
 
-                <p className="text-md text-zinc-700 leading-relaxed whitespace-pre-line">
+                <p className="text-md text-black leading-relaxed whitespace-pre-line text-justify">
                   {facilitator.description}
                 </p>
 

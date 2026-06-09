@@ -16,8 +16,8 @@ export default async function Preco() {
   }
 
   return (
-    <div className=" lg:my-20 my-8 mx-[10%] flex flex-col">
-      <h1 className="lg:text-[48px] md:text-[36px] max-md:text-[22px] font-semibold self-start">
+    <div className=" lg:my-20 my-12 mx-[10%] flex flex-col">
+      <h1 className="lg:text-[48px] md:text-[36px] text-[26px] font-bold self-start">
         Investimento
       </h1>
 

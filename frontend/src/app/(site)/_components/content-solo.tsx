@@ -22,7 +22,7 @@ export function ContentSolo({ content }: contentSoloProps) {
     return (
         <div className="flex items-center 
             md:pl-3 md:pr-3 md:py-16 md:gap-10
-            lg:pl-6 lg:pr-6 lg:py-16 lg:gap-32
+            lg:pl-6 lg:pr-6 lg:py-16 xl:gap-32 lg:gap-20 
         ">
             <div className="bg-[#4DADB0] rounded-[20px] p-6 flex flex-col items-center gap-6 mt-8 w-[258px] h-[527px]
                 md:contents
@@ -31,7 +31,7 @@ export function ContentSolo({ content }: contentSoloProps) {
                 <div className='order-2 flex flex-col w-full shrink-0 gap-4 
                     md:order-1 md:w-[350px]
                     lg:order-1 lg:w-[450px]'>
-                    <ul className="list-disc">
+                    <ul className="list-none">
                         {topics.map((topic, index) => (
                             <li key={index} className="text-[14px] text-white
                                 md:text-base md:text-black                
