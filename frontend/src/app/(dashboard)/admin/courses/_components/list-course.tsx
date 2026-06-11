@@ -89,7 +89,7 @@ export default async function ListCourse({
                 <TableCell>{courseItem.primary_text}</TableCell>
 
                 <TableCell>
-                  <TabbleCellImage src={courseItem.secondary_image} />
+                  <TabbleCellImage src={courseItem.secondary_image ?? ""} />
                 </TableCell>
 
                 <TableCell>{courseItem.secondary_text}</TableCell>

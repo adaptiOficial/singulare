@@ -32,7 +32,7 @@ export default async function Page({
           <ListBanners
             page={Number(page)}
             perPage={Number(perPage)}
-            text={text as string}
+            title={text as string}
           />
         </Suspense>
       </DashboardMain>

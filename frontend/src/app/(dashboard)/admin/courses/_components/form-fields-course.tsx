@@ -95,7 +95,7 @@ export default function FormFieldsCourse({
             name="secondary_text"
             id="secondary_text"
             placeholder="Insira o texto"
-            defaultValue={course?.secondary_text}
+            defaultValue={course?.secondary_text ?? ""}
             disabled={pending}
             readOnly={readOnly}
             error={error?.errors?.text}
@@ -122,7 +122,7 @@ export default function FormFieldsCourse({
           />
           <ImageForm
             className="aspect-square size-40"
-            src={secondaryImage || course?.secondary_image}
+            src={secondaryImage || (course?.secondary_image ?? "")}
           />
         </FormField>
 

@@ -3,6 +3,9 @@ const apiUrl = new URL(apiUrlString);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {

@@ -34,7 +34,7 @@ export default async function Page({
           <ListFeedbacks
             page={Number(page)}
             perPage={Number(perPage)}
-            username={username as string}
+            name={username as string}
           />
         </Suspense>
       </DashboardMain>
