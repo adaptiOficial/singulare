@@ -7,6 +7,9 @@ import { formatCpf } from "@/lib/cpf";
 import { ResponseErrorType } from "@/services/api";
 
 export function InscriptionForm() {
+  // 1. Verifica se a variável de ambiente está ativa para fechar as inscrições
+  const isInscriptionsClosed = process.env.NEXT_PUBLIC_DISABLE_INSCRIPTIONS === 'true';
+
   const [nomeCompleto, setNomeCompleto] = useState("");
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
@@ -16,6 +19,22 @@ export function InscriptionForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const { toast } = useToast();
+
+  // 2. Se as inscrições estiverem fechadas, exibe a mensagem amigável no lugar do form
+  if (isInscriptionsClosed) {
+    return (
+      <div className="flex flex-col items-center bg-[#4DADB0] md:py-24 py-16 px-[10%]">
+        <div className="w-full max-w-4xl text-center bg-white/10 backdrop-blur-sm rounded-2xl p-10 border-2 border-dashed border-white/20 shadow-xl">
+          <h1 className="lg:text-5xl md:text-3xl text-2xl font-bold text-white mb-4">
+            Inscrições Encerradas!
+          </h1>
+          <p className="text-white/90 text-lg md:text-xl font-medium max-w-2xl mx-auto">
+            No momento as inscrições para este curso estão fechadas. Fique atento às nossas novidades e próximas turmas!
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
