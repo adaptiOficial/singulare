@@ -24,7 +24,7 @@ export function ContentSolo({ content }: contentSoloProps) {
             md:pl-3 md:pr-3 md:py-16 md:gap-10
             lg:pl-6 lg:pr-6 lg:py-16 xl:gap-32 lg:gap-20 
         ">
-            <div className="bg-[#4DADB0] rounded-[20px] p-6 flex flex-col items-center gap-6 mt-8 w-[258px] h-[527px]
+            <div className="bg-[#4DADB0] rounded-[20px] p-6 flex flex-col items-center gap-6 mt-8 w-[258px] h-[542px]
                 md:contents
                 lg:contents
             ">

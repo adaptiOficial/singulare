@@ -18,7 +18,7 @@ class MoreInformationFactory extends Factory
     {
         return [
             'numero_turma' => '17',
-            'dias' => '15 e 22 de agosto de 2025',
+            'dias' => '15 e 22 de agosto de 2026',
             'inicio' => '8:00 horas',
             'encerramento' => '18:00 horas',
             'local' => 'Rua João Nardoto, 92, Bairro Jaqueline - São Mateus - ES (OAB)',

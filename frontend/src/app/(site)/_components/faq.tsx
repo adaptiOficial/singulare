@@ -58,8 +58,8 @@ useEffect(() => {
                 openIndex === index ? " " : "max-h-0"
               }`}
             >
-              <div className="bg-[#ABE3E5B2] rounded-[20px] lg:py-[72px] md:py-10 lg:px-[66px] md:px-10 px-3 py-8 mt-[10px]">
-                <p className="lg:text-[32px] md:text-[24px] sm:text-[16px] text-[11px] text-white">
+              <div className="bg-[#87CCD0] rounded-[20px] lg:py-[72px] md:py-10 lg:px-[66px] md:px-10 px-3 py-8 mt-[10px]">
+                <p className="lg:text-[32px] md:text-[24px] sm:text-[16px] text-[11px] text-white font-semibold">
                   {item.answer}
                 </p>
               </div>

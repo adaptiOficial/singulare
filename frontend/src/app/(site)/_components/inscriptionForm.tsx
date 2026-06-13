@@ -124,7 +124,7 @@ export function InscriptionForm() {
               type="submit" 
               className="bg-[#167174] text-white px-10 py-4 rounded-full text-xl font-bold hover:bg-[#125a5d] transition-all transform hover:scale-105 shadow-lg"
             >
-              Increve-se
+              Inscreva-se
             </button>
           </div>
         </form>
