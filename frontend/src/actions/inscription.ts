@@ -3,7 +3,6 @@
 import { api } from '@/services/api'
 import { revalidatePath } from 'next/cache'
 import { getPhoneDigits } from '@/lib/phone'
-import { getCpfDigits } from '@/lib/cpf'
 
 export async function createInscription(form: FormData) {
     const nome_completo = form.get('nome_completo') as string
@@ -14,7 +13,7 @@ export async function createInscription(form: FormData) {
     const ramo_atividade = form.get('ramo_atividade') as string
 
     const cleanTelefone = getPhoneDigits(telefone)
-    const cleanCpfCnpj = getCpfDigits(cpf_cnpj)
+    const cleanCpfCnpj = cpf_cnpj.replace(/\D/g, '')
     const cleanQuantidade = quantidade_inscricoes ? Number(quantidade_inscricoes) : 0
 
     const data: Record<string, any> = {

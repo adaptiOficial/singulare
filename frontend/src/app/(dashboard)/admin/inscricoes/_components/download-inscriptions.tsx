@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Button } from '@/components/button'
 import { api } from '@/services/api'
 import { paginationResponseType } from '@/types/pagination-response'
-
 interface Inscription {
   id: string
   nome: string
@@ -28,6 +27,7 @@ export default function DownloadInscription() {
   }
 
   async function handleDownload() {
+    const XLSX = await import('xlsx')
     // Validação de preenchimento dos campos
     if (!startDate || !endDate) {
       alert('Por favor, selecione ambas as datas (Início e Fim) antes de baixar.')
@@ -64,53 +64,38 @@ export default function DownloadInscription() {
       return
     }
 
-    // 5. Geração do CSV
-    const csv = [
-      [
-        'Nome',
-        'Email',
-        'Telefone',
-        'CPF/CNPJ',
-        'Quantidade',
-        'Ramo',
-        'Status',
-        'Criado em'
-      ],
-      ...filteredInscriptions.map((item: Inscription) => [
-        item.nome,
-        item.email,
-        item.telefone,
-        item.cpf_cnpj,
-        item.quantidade_inscricoes,
-        item.ramo_atividade ?? '-',
-        item.done === '1' ? 'Confirmada' : 'Pendente',
-        formatDate(item.created_at)
-      ])
-    ]
-      .map((row) =>
-        row.map((value) => `"${String(value ?? '')}"`).join(';')
-      )
-      .join('\n')
+    const excelData = filteredInscriptions.map((item: Inscription) => ({
+      Nome: item.nome,
+      Email: item.email,
+      Telefone: item.telefone,
+      'CPF/CNPJ': item.cpf_cnpj, // mantém como texto
+      Quantidade: item.quantidade_inscricoes,
+      Ramo: item.ramo_atividade ?? '-',
+      Status: item.done === '1' ? 'Confirmada' : 'Pendente',
+      'Criado em': formatDate(item.created_at)
+    }))
 
-    const blob = new Blob(
-      ['\uFEFF' + csv],
-      {
-        type: 'text/csv;charset=utf-8;'
+    const worksheet = XLSX.utils.json_to_sheet(excelData)
+
+    // força a coluna CPF/CNPJ a ser texto
+    const range = XLSX.utils.decode_range(worksheet['!ref'] || 'A1')
+
+    for (let row = 1; row <= range.e.r; row++) {
+      const cellAddress = XLSX.utils.encode_cell({ r: row, c: 3 }) // coluna D
+      const cell = worksheet[cellAddress]
+
+      if (cell) {
+        cell.t = 's'
       }
+    }
+
+    const workbook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Inscrições')
+
+    XLSX.writeFile(
+      workbook,
+      `inscricoes_${startDate}_a_${endDate}.xlsx`
     )
-
-    const url = window.URL.createObjectURL(blob)
-
-    const link = document.createElement('a')
-    link.href = url
-    // O nome do arquivo agora reflete o período selecionado
-    link.download = `inscricoes_${startDate}_a_${endDate}.csv`
-
-    document.body.appendChild(link)
-    link.click()
-
-    document.body.removeChild(link)
-    window.URL.revokeObjectURL(url)
   }
 
   return (

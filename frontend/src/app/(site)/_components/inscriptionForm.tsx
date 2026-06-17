@@ -3,7 +3,12 @@ import { createInscription } from "@/actions/inscription";
 import { useState } from "react";
 import { useToast } from "@/components/use-toast";
 import { formatPhone } from "@/lib/phone";
-import { formatCpf } from "@/lib/cpf";
+import {
+  formatCnpj,
+  formatCpf,
+  isValidCpf,
+  isValidCnpj
+} from "@/lib/cpf";
 import { ResponseErrorType } from "@/services/api";
 
 export function InscriptionForm() {
@@ -17,7 +22,7 @@ export function InscriptionForm() {
   const [quantidadeInscricoes, setQuantidadeInscricoes] = useState("");
   const [ramoAtividade, setRamoAtividade] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
-
+  const [documentType, setDocumentType] = useState<'cpf' | 'cnpj'>('cpf');
   const { toast } = useToast();
 
   // 2. Se as inscrições estiverem fechadas, exibe a mensagem amigável no lugar do form
@@ -39,6 +44,25 @@ export function InscriptionForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrors({});
+
+  const isValid =
+    documentType === 'cpf'
+      ? isValidCpf(cpfCnpj)
+      : isValidCnpj(cpfCnpj);
+
+  if (!isValid) {
+    setErrors({
+      cpf_cnpj: `${documentType.toUpperCase()} inválido`
+    });
+
+    toast({
+      title: `${documentType.toUpperCase()} inválido`,
+      description: `Informe um ${documentType.toUpperCase()} válido.`,
+      variant: 'destructive'
+    });
+
+    return;
+  }
 
     const form = new FormData();
     form.append('nome_completo', nomeCompleto);
@@ -102,9 +126,41 @@ export function InscriptionForm() {
           </div>
           <div className="flex flex-col gap-6">
             <div className="flex flex-col">
-              <label className={labelStyle}>CPF/CNPJ <span className="text-red-600">*</span></label>
-              <input className={inputStyle} placeholder="CPF/CNPJ" value={cpfCnpj} onChange={(e) => setCpfCnpj(formatCpf(e.target.value))} />
-              {errors.cpf_cnpj && <span className="text-red-900 text-xs mt-1 px-2 font-bold">{errors.cpf_cnpj}</span>}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <span className="text-lg font-semibold text-black">
+                    {documentType === 'cpf' ? 'CPF' : 'CNPJ'}
+                    <span className="ml-[5px] text-red-600">*</span>
+                  </span>
+
+                  {/* Toggle único entre CPF e CNPJ */}
+                  <button
+                    type="button"
+                    aria-pressed={documentType === 'cnpj'}
+                    onClick={() => {
+                      setDocumentType(prev => (prev === 'cpf' ? 'cnpj' : 'cpf'));
+                      setCpfCnpj('');
+                    }}
+                    className="bg-[#167174] relative inline-flex items-center h-6 w-10 rounded-full p-0.5 transition-colors"
+                  >
+                    <span className={`bg-white rounded-full w-5 h-5 transform transition-transform ${documentType === 'cnpj' ? 'translate-x-4' : 'translate-x-0'}`} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-1">
+                <input
+                  className={inputStyle}
+                  placeholder={documentType === 'cpf' ? '000.000.000-00' : '00.000.000/0000-00'}
+                  value={cpfCnpj}
+                  onChange={(e) =>
+                    setCpfCnpj(
+                      documentType === 'cpf' ? formatCpf(e.target.value) : formatCnpj(e.target.value)
+                    )
+                  }
+                />
+                {errors.cpf_cnpj && <span className="text-red-900 text-xs mt-1 px-2 font-bold">{errors.cpf_cnpj}</span>}
+              </div>
             </div>
 
             <div className="flex flex-col">
